@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SidebarProvider = void 0;
 const vscode = require("vscode");
 const getNonce_1 = require("./getNonce");
+
+
 class SidebarProvider {
     constructor(_extensionUri) {
         this._extensionUri = _extensionUri;

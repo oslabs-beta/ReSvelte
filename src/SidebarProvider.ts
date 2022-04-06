@@ -1,5 +1,7 @@
 import * as vscode from "vscode";
 import { getNonce } from "./getNonce";
+
+
 //const sidebarDisplay = require('./webviews/components/Sidebar/Sidebar.js');
 
 export class SidebarProvider implements vscode.WebviewViewProvider {
@@ -14,7 +16,6 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     webviewView.webview.options = {
       // Allow scripts in the webview
       enableScripts: true,
-
       localResourceRoots: [this._extensionUri],
     };
 
@@ -62,6 +63,9 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     // Use a nonce to only allow a specific script to be run.
     const nonce = getNonce();
 
+
+    console.log('Congratulations, your NEW extension "ReSvelte" is now active!');
+
     return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -78,11 +82,17 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 				<link href="${styleVSCodeUri}" rel="stylesheet">
         <link href="${styleMainUri}" rel="stylesheet">
 			</head>
+      <body id='root'>
+				<script nonce="${nonce}" src="${scriptUri}"></script>
+			</body>
 
 
-      <body>
+			</html>`;
+  }
+}
 
-      <div>
+/*
+    <div>
         <input title="" type="file" value="import file"  id="files" style="display:none">
           <label for="files" id="import">Import Folder Here</label>
         </input>
@@ -103,14 +113,4 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           color: black;
           transition: 0.4s;
         }
-        </style>
-
-
-
-				<script nonce="${nonce}" src="${scriptUri}"></script>
-			</body>
-
-
-			</html>`;
-  }
-}
+*/
