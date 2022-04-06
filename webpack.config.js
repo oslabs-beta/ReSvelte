@@ -25,10 +25,35 @@ const extensionConfig = {
   },
   resolve: {
     // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.mjs', '.svelte'],
+    alias: {
+      svelte: path.resolve('node_modules', 'svelte')
+    },
+    mainFields: ['svelte', 'browser', 'module', 'main']
   },
   module: {
     rules: [
+      {
+        test: /\.(html|svelte)$/,
+        use: 'svelte-loader'
+      },
+      {
+        test: /\.jsx?/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env','@babel/preset-react']
+          }
+        }
+      },
+      {
+        // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
+        test: /node_modules\/svelte\/.*\.mjs$/,
+        resolve: {
+          fullySpecified: false
+        }
+      },
       {
         test: /\.ts$/,
         exclude: /node_modules/,
@@ -37,6 +62,21 @@ const extensionConfig = {
             loader: 'ts-loader'
           }
         ]
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
       }
     ]
   },
