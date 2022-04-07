@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SidebarProvider = void 0;
 const vscode = require("vscode");
-const getNonce_1 = require("./getNonce");
+const getNonce = require("./getNonce");
 
 
 class SidebarProvider {
@@ -45,7 +45,7 @@ class SidebarProvider {
         const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.js"));
         const styleMainUri = webview.asWebviewUri(vscode.Uri.joinPath(this._extensionUri, "out", "compiled/sidebar.css"));
         // Use a nonce to only allow a specific script to be run.
-        const nonce = (0, getNonce_1.getNonce)();
+        const nonce = (0, getNonce.getNonce)();
         return `<!DOCTYPE html>
 			<html lang="en">
 			<head>

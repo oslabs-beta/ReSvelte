@@ -82,6 +82,7 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
+    "react-dom": "^18.0.0",
     "react-jsx": "^1.0.0",
     "react-redux": "^7.2.8",
     "svelte-loader": "^3.1.2"

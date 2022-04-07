@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SideBar from './Sidebar.js';
+import Sidebar from './Sidebar.js';
 
-ReactDOM.render(<SideBar />,document.getElementById('root'));
+
+
+ReactDOM.render(<Sidebar />, document.getElementById('root'));

@@ -1,5 +1,11 @@
 import * as vscode from "vscode";
 import { getNonce } from "./getNonce";
+import * as ReactDOMServer from 'react-dom/server'
+
+
+const sidebar = require('./webviews/Sidebar.js');
+
+//const render = require('./webviews/render.js');
 
 
 //const sidebarDisplay = require('./webviews/components/Sidebar/Sidebar.js');
@@ -63,10 +69,9 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
     // Use a nonce to only allow a specific script to be run.
     const nonce = getNonce();
 
+    return (
 
-    console.log('Congratulations, your NEW extension "ReSvelte" is now active!');
-
-    return `<!DOCTYPE html>
+      `<!DOCTYPE html>
 			<html lang="en">
 			<head>
 				<meta charset="UTF-8">
@@ -83,11 +88,20 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
         <link href="${styleMainUri}" rel="stylesheet">
 			</head>
       <body id='root'>
+        ${
+          ReactDOMServer.renderToString(
+
+          )
+
+        }
+
+        <script src='./webviews/render.js'></script>
 				<script nonce="${nonce}" src="${scriptUri}"></script>
 			</body>
 
 
-			</html>`;
+			</html>`
+      );
   }
 }
 
