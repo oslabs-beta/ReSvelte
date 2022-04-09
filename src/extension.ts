@@ -1,7 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import path from 'path'
+
+import { SidebarProvider } from './SidebarProvider';
 
 
 // this method is called when your extension is activated
@@ -22,6 +23,11 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 
+	const sidebarProvider = new SidebarProvider(context.extensionUri);
+	context.subscriptions.push(
+		vscode.window.registerWebviewViewProvider('ReSvelte-Sidebar', sidebarProvider)
+	);
+
 	
 	let addStartCommand = vscode.commands.registerCommand('resvelte.start', () => {
 		const panel = vscode.window.createWebviewPanel('ReSvelte', 'ReSvelte', vscode.ViewColumn.One, {});
@@ -32,17 +38,18 @@ export function activate(context: vscode.ExtensionContext) {
 			localResourceRoots: [
 				scriptUri
 			]
-		}	
+		};
 		panel.webview.html = (
 			`	
 			<html>
 				<head>
-				</head>
+				</head> 	
 				<body >
 					Hello ReSvelte User!
 					<div id='root'>im a div here is the path: ${scriptUri}</div>
 				</body>
-				<script src ='${scriptUri}' ></script>
+				<script src ='${panel.webview.asWebviewUri(vscode.Uri.file(context.extensionUri.path + '/dist/extension.js')
+				)}' ></script>
 			</html>
 			`
 		);
