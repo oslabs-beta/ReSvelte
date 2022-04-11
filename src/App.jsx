@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import 'App.css';
+// import 'App.css';
 
 
 const App = () => {
@@ -11,13 +11,8 @@ const App = () => {
   return(
     <div >
         <div id='uploadContainer'>
-          <h2>Select the folder you would like to import! </h2>
-          <input id='uploadButton' type="file" ></input>
-
-          <App>
-          
-            <body/>
-          </App>
+          <h2>Select the folder you would like to import!</h2>
+          <input id='uploadButton' directory="" webkitdirectory="" type="file" ></input>
 
           
         </div>
