@@ -5,7 +5,7 @@ import * as jsx from 'acorn-jsx';
 const reader = new FileReader();
 import regeneratorRuntime from "regenerator-runtime";
 
-import parse from 'svelte-parse';
+import { parse } from 'svelte-parse';
 
 // const parser = acorn.Parser;
 // const parse = parser.extend(jsx())
@@ -17,7 +17,7 @@ const sidebarParser =  async (file) => {
 // if size of the file is 0 dont run
 
  
-  console.log('file:',file)
+  console.log('file:',file);
 
 
   reader.readAsText(file);
@@ -27,17 +27,18 @@ const sidebarParser =  async (file) => {
 // remove non-printable and other non-valid JSON chars
 
 
-    console.log(e.target.result)
+    console.log(e.target.result);
     let sourceCode = e.target.result;
     // preserve newlines, etc - use valid JSON
-
-    console.log(parse(sourceCode));
+console.log('before parse');
+console.log('parsed', parse({ value: sourceCode}));
+    // console.log(parse(sourceCode));
     // let data = parse('<>  ', {ecmaVersion:2020, sourceType: "module"});
     //  console.log('this is data', data);  
-
-  }
+    console.log('after parse');
+  };
   console.log('this is reader',  reader);
-  console.log('reader result', reader.result) 
+  console.log('reader result', reader.result); 
 
   };  
 

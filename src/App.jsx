@@ -31,7 +31,7 @@ const App = () => {
 
     console.log('files we have access to', files)
     const parse = sidebarParser;
-    parse(files[0]);
+    parse(files[3]);
     //reader.readAsText(files[0], "UTF-8");
     //console.log(data);
     // let ast = parse(reader.readAsText(files[0]), {ecmaVersion: 2020})
