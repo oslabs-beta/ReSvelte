@@ -6,14 +6,19 @@ import { useState } from "react";
 import sidebarParser from "./SidebarParser";
 
 
-// import PerfomanceDisplay from './components/performanceDisplay';
+import PerfomanceDisplay from './components/performanceDisplay';
+import ErrorMessage from './components/errorMessage'
 
 
 
 const App = () => {
 
-  // renders different when uploaded
+ 
   const [isUploaded, setUploaded] = useState(false);
+  const [errorLog, setError] = useState([]);
+  const [components, setComponents] = useState([]);
+  const [totalComponents, setTotalComponents] = useState();
+  const [totalRerendering, setTotalRerendering] = useState();
 
   const [importedFiles, setFiles] = useState([]);
   const reader = new FileReader();
@@ -44,6 +49,21 @@ const App = () => {
     //   }
     // } );
 
+    
+    // test uploading errors
+    setError([
+      <ErrorMessage errorCode={12345} errorMessage={'testing123'}/>,
+      <ErrorMessage errorCode={4255058368} errorMessage={'error message'}/>,
+      <ErrorMessage errorCode={12} errorMessage={'component error'}/>,
+    ]);
+
+    setComponents([
+      'someComponent'
+    ]);
+
+    setTotalComponents(12);
+    setTotalRerendering(9);
+
     setFiles(output);
     setUploaded(true);
 
@@ -54,15 +74,15 @@ const App = () => {
     <div >
       {isUploaded ? 
         ( 
-          <div>
+          <div className="appDisplay">
               <div>
                   {importedFiles}
                 </div>
-              {/*<PerfomanceDisplay/>*/}
+              <PerfomanceDisplay {...{errorLog, totalComponents, totalRerendering}}/>
            </div>
         ): 
         (
-       <div id='uploadContainer'>
+       <div id='uploadContainer' className="appDisplay">
             <h2>Select the folder you would like to import!</h2>
             <input 
             onChange={(event) => {
@@ -70,7 +90,9 @@ const App = () => {
               changeHandler(event.target.files);
             }
           } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>  
+          <PerfomanceDisplay {...errorLog} />
           </div> 
+          
         )
       }
     </div>
