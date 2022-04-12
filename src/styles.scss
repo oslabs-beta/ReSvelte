@@ -1,0 +1,174 @@
+/* #import{
+  width: 100px;
+  height: 20px;
+  border: solid 1px black;
+  padding: 5px;
+  background-color: white;
+}
+
+#import:hover{
+  cursor:pointer;
+  background-color: white;
+  color: black;
+  transition: 0.4s;
+} */
+
+$borderColor: white;
+$fillColor: white;
+
+
+
+.appDisplay{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#performanceDisplay{
+
+  $secondaryColor:rgb(193, 193, 193);
+  $thirdColor: rgb(142, 142, 142);
+  $displayComponentBackground: rgb(177, 177, 177);
+
+
+  color: black;
+
+  height:100%;
+  width: 80%;
+  min-width: 100px;
+
+  margin: 3%;
+  
+
+
+
+  border-style: solid;
+  border-color: $borderColor;
+  border-width: 10px;
+  border-radius: 10px;
+
+  background-color: $fillColor;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  #mainContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+    gap: 30px;
+    margin: 5%;
+    width: 90%;
+    height: 100%;
+
+    border-style: solid;
+    border-color: $secondaryColor;
+    border-width: 10px;
+    border-radius: 10px;
+    background-color: $secondaryColor;
+
+    div{
+ 
+    }
+
+    .display{
+      display: flex;
+      justify-content: center;
+
+      border-style: solid;
+      border-color: $thirdColor;
+      background-color: $thirdColor;
+      border-radius: 10px;
+ 
+
+      width: 90%; 
+    }
+
+
+    #Top{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    width: 95%;
+    
+
+
+
+
+    }
+
+    #Bottom{
+
+
+    }
+
+    #Graphs{
+
+
+    }
+
+    #Components{  
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly ;
+      align-items: center;
+      div{
+
+        width: 90%;
+        height: 90%;
+
+        display:flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      #componentStatsDisplay{
+        display: flex;
+        justify-content: space-evenly;
+      }
+    }
+
+    #errorDisplay{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5vh;  
+
+      width: 95%;
+      height:100%;
+
+      #errorMessage{
+
+        flex-direction: row;
+        background-color: $displayComponentBackground;
+        font-weight: bold;
+
+        border-radius: 5px;
+        width:95%;
+
+
+        padding-left: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        margin-bottom: .5vh;
+    }
+    
+      }
+
+    }
+  }
+
+
+
+
+
+
