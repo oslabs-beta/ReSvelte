@@ -1,21 +1,78 @@
 import React from "react";
 import { useState } from "react";
-// import 'App.css';
+// import { parse } from 'acorn';
+
+
+import sidebarParser from "./SidebarParser";
+
+
+// import PerfomanceDisplay from './components/performanceDisplay';
+
 
 
 const App = () => {
 
-  const [path, setPath] = useState(null);
+  // renders different when uploaded
+  const [isUploaded, setUploaded] = useState(false);
 
-  
-  return(
+  const [importedFiles, setFiles] = useState([]);
+  const reader = new FileReader();
+
+  // STRETCH FEATURE : Create a render tree function so that user may upload another file at any given moment and it will rerender tree
+
+  // handler for when user uploads folder
+  const changeHandler = (files) => {
+    const output = [];
+    for (let i = 0; i < files.length; i++) {
+      if (files[i].name.includes('.svelte')){
+        output.push(<li>{files[i].name}</li>);
+      }     
+    };
+
+    console.log('files we have access to', files)
+    const parse = sidebarParser;
+    parse(files[0]);
+    //reader.readAsText(files[0], "UTF-8");
+    //console.log(data);
+    // let ast = parse(reader.readAsText(files[0]), {ecmaVersion: 2020})
+    // console.log('ast', ast);
+
+    // walk.simple(ast, {
+    //   enter(node){  
+    //     console.log('this is the node:',node);
+    //     console.log('this is the node type:', node.type);
+    //   }
+    // } );
+
+    setFiles(output);
+    setUploaded(true);
+
+  };
+
+
+  return( 
     <div >
-        <div id='uploadContainer'>
-          <h2>Select the folder you would like to import!</h2>
-          <input id='uploadButton' directory="" webkitdirectory="" type="file" ></input>
+      {isUploaded ? 
+        ( 
+          <div>
+              <div>
+                  {importedFiles}
+                </div>
+              {/*<PerfomanceDisplay/>*/}
+           </div>
+        ): 
+        (
+       <div id='uploadContainer'>
+            <h2>Select the folder you would like to import!</h2>
+            <input 
+            onChange={(event) => {
 
-          
-        </div>
+              changeHandler(event.target.files);
+            }
+          } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>  
+          </div> 
+        )
+      }
     </div>
   );
 };

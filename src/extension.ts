@@ -13,12 +13,12 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.registerWebviewViewProvider('ReSvelte-Sidebar', sidebarProvider)
 	);
 
-	context.subscriptions.push(
-		vscode.commands.registerCommand("resvelte.createTree", async (uri: vscode.Uri | undefined) => {
-			await vscode.commands.executeCommand('workbench.view.extension.Resvelte-Sidebar');
-		// sidebarProvider.statusButtonClicked(uri);
-		})
-	);
+	// context.subscriptions.push(
+	// 	vscode.commands.registerCommand("resvelte.createTree", async (uri: vscode.Uri | undefined) => {
+	// 		await vscode.commands.executeCommand('workbench.view.extension.Resvelte-Sidebar');
+	// 	// sidebarProvider.statusButtonClicked(uri);
+	// 	})
+	// );
 };
 
 

@@ -12,3 +12,20 @@
   color: black;
   transition: 0.4s;
 } */
+
+
+#performanceDisplay{
+
+  height:200px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#performanceTop{
+  display: flex;
+  justify-content: center;
+}
