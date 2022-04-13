@@ -1,52 +1,60 @@
-# resvelte README
+<div align="center">
+  <a href="https://github.com/oslabs-beta/ReSvelte"></a>
+  <img src="/assets/banner.png" alt="bannerLogo" width="100%">
+</div>
+# ReSvelte README
 
-This is the README for your extension "resvelte". After writing up a brief description, we recommend including the following sections.
+Welcome to ReSvelte y'all. This is a VS Code extension that will allow developers to visualize component trees and performance metrics for their .svelt applications. 
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+<!-- Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file. -->
 
-For example if there is an image subfolder under your extension project workspace:
+<!-- For example if there is an image subfolder under your extension project workspace: -->
 
-\!\[feature X\]\(images/feature-x.png\)
+<!-- \!\[feature X\]\(images/feature-x.png\) -->
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+<!-- > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow. -->
 
-## Requirements
+## Installation
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+1. Install ReSvelte in the VSCode Extension MarketPlace
 
-## Extension Settings
+2. A ReSvelte icon should appear on your sidebar. you have successfully installed ReSvelte! ^__^
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+3. Upload your Svelte folder and if message "folder uploaded", you are all set
 
-For example:
+5. Tree Visualizer should now be populated in the sidebar
+<!-- If you have any requirements or dependencies, add a section describing those and how to install and configure them. -->
 
-This extension contributes the following settings:
+<!-- To get started, execute "npm i" in your terminal -->
+<!-- Execute 'npm run build' in the terminal to get the application started -->
+<!-- 'npm install' to install all the dependencies -->
+## Technologies Used 
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+React, Typescript, Svelte, React Hooks
 
-## Known Issues
+## What Needs Work?
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None so far!
+ReSvelte will be updated as needed.
 
-## Release Notes
+## Developers
 
-Users appreciate release notes as you update your extension.
+* Hoon Park <a src="www.linkedin.com/in/hoonpvrk">Linkedin</a> <a src="https://github.com/hoonpvrk">Github</a>
+* Martin Ng <a src="http://www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src="https://github.com/Sateeven">Github</a>
+* Jestyn Apuya <a src="https://www.linkedin.com/in/jestynapuya/">Linkedin</a> <a src"https://github.com/JestynA">Github</a>
+* Steven Nguyen <a src="www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src="https://github.com/Sateeven">Github</a>
+* Candie Hill <a src="https://www.linkedin.com/in/candie-hill/">Linkedin</a> <a src="https://github.com/can619">Github</a>
+* Kristina Wallen <a src="https://www.linkedin.com/in/kristina-wallen/">Linkedin</a> <a src="https://github.com/kristinawallen">Github</a>
 
-### 1.0.0
+## Contact Us
+Email: resvelteadm@gmail.com
 
-Initial release of ...
+Website: resvelte.com
 
-### 1.0.1
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
+// END READ ME
 -----------------------------------------------------------------------------------------------------------
 ## Following extension guidelines
 
@@ -67,6 +75,5 @@ Ensure that you've read through the extensions guidelines and follow the best pr
 * [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
-**Enjoy!**
-# PersonalResvelte
-# PersonalResvelte
+
+
