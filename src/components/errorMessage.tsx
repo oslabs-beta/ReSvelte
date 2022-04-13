@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles.scss'
+import '../styles.scss';
 
 const errorMessage = (props) => {
 
@@ -7,9 +7,9 @@ const errorMessage = (props) => {
   return(
     <div id='errorMessage'>
         {props.errorCode} : {props.errorMessage}
-
+    "svelte component called, but not imported"
     </div>
-  )
-}
+  );
+};
 
 export default errorMessage;
