@@ -1,7 +1,12 @@
 
-const reader = new FileReader();
+
+import { async } from 'regenerator-runtime';
 import { parse } from 'svelte-parse';
-const svelteParser = parse;
+const svelteParser =  parse;
+
+
+
+
 
 /*
 - create a component tree from imported data
@@ -52,6 +57,19 @@ needed data:
 // }
 
 
+async function readFile(file){
+    return new Promise( async (resolve, reject) =>  {
+     var fr = new FileReader();  
+    fr.onload = () => {
+      console.log('finished', file)
+      resolve(fr.result)
+      
+    };
+    fr.onerror = reject;
+    fr.readAsText(file);
+  });
+ 
+}
 
 //helper functions
 // function that searches imported files
@@ -59,38 +77,82 @@ needed data:
 // function to compare imported files to rendered component
 
 // function to only parse children of svelteElement or svelteComponent types
-function parseTree(file , setSvelteFiles, svelteFiles){
+async function parseTree(file) {
   // if this file has already been parsed, dont parse again
   //if(svelteFiles.(file.name).parsedData) return;
   const fileObj ={};
   const childComponents = [];
 
-  reader.readAsText(file);
-  reader.onload = (event) => {
-    console.log('current file:',event.target.result)
-    const data = svelteParser({ value: event.target.result});
-    console.log('parsed', data);
+
+  return new Promise( async (resolve, reject) =>  {
+    var reader = new FileReader();  
+    reader.onload = () => {
+    console.log('finished');
+
+    // check if we have parsed this component before
+   // if (svelteFiles.some(e => e.fileName === file.fileName)) return;
+    const data = svelteParser({ value: reader.result});
+    console.log(data)
+
+    for(let i = 0; i < data.children.length; i++){
+      if(data.children[i].type === 'svelteElement' || data.children[i].type === 'svelteComponent' || data.children[i].type === 'svelteScript'){    
+        //parseComponent(data.children[i])
+        console.log('found svelte component', data.children[i]);
+        childComponents.push(data.children[i]);
+        // parseTree(data.children[i])
+      }
+
+     
+    };
+
+    fileObj.fileName = file.name;
+    fileObj.children = childComponents;
+    
+
+    resolve(fileObj);
+   };
+   reader.onerror = reject;
+   reader.readAsText(file);
+ });
+
+  console.log('starting:', file.name)
+  // console.log('current file', file)
+  return readFile(file)
+
+  // console.log('awaited:', await readFile(file))
+  //const data = await readFile(file)
+  //console.log('read:', data)
+
+  // const reader = new FileReader();
+  // console.log(1)
+  // reader.readAsText(file);
+  // console.log(2)
+  // reader.onload = (event)  =>  {
+  //   console.log(3)
+  //   //console.log('current file:',event.target.result)
+  //   const data = svelteParser({ value: event.target.result});
+  //   console.log('parsed', file.name);
 
    
 
     
-    for(let i = 0; i < data.children.length; i++){
-      if(data.children[i].type === 'svelteElement' || data.children[i].type === 'svelteComponent' || data.children[i].type === 'svelteScript'){    
-        //parseComponent(data.children[i])
-        console.log('found svelte component')
-        childComponents.push(data.children[i]);
-      }
+  //   for(let i = 0; i < data.children.length; i++){
+  //     if((data.children[i].type === 'svelteElement' && data.children[i].tagName === 'div')|| data.children[i].type === 'svelteComponent' || data.children[i].type === 'svelteScript'){    
+  //       //parseComponent(data.children[i])
+  //       console.log('found svelte component', data.children[i]);
+  //       childComponents.push(data.children[i]);
+  //     }
 
-    }
-    fileObj.fileName = file.name;
-    fileObj.parsedData = data;
-    fileObj.children = childComponents;
+  //   }
+  //   fileObj.fileName = file.name;
+  //   fileObj.parsedData = data;
+  //   fileObj.children = childComponents;
 
 
-  };
+  // };
  
-  console.log(fileObj)
-  setSvelteFiles([...svelteFiles, fileObj]);
+  //console.log(fileObj)
+  //setSvelteFiles([...svelteFiles, fileObj]);
   //return fileObj;
 }
 

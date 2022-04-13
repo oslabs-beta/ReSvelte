@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 import sidebarParser from "./SidebarParser";
@@ -10,16 +10,18 @@ import ErrorMessage from './components/errorMessage';
 
 const App = () => {
 
- 
+
   const [isUploaded, setUploaded] = useState(false);
   const [errorLog, setError] = useState([]);
   const [components, setComponents] = useState([]);
   const [totalComponents, setTotalComponents] = useState();
   const [totalRerendering, setTotalRerendering] = useState();
 
-  const [svelteFiles, setSvelteFiles] = useState([]);
+  //const [svelteFiles, setSvelteFiles] = useState([]);
   const [filesDisplay, setReactFiles] = useState([]);
   const reader = new FileReader();
+
+  const svelteFiles = [];
 
   // STRETCH FEATURE : Create a render tree function so that user may upload another file at any given moment and it will rerender tree
 
@@ -30,66 +32,60 @@ const App = () => {
     // invoke the component tree builder with the returned node from parser
       // component tree builder is expecting an object of node type
 
-  // inside the tree builder, 
+  // inside the tree builder,
   /*
     // NODE TYPE
     interface Node{
       rerenderingComponents: number,
       totalComponents: number,
-      children: node[],     
+      children: node[],
     }
 
   */
 
-  const changeHandler = (files) => {
-    
+
+
+  const changeHandler = async (files) => {
+
 //File is an object that is inside of FileList
-    
+
     const output = [];
-    const svelteFiles = [];
     let mainFile;
 
-    
-
     for (let i = 0; i < files.length; i++) {
-      if (files[i].name.includes('.svelte')){
-        sidebarParser(files[i], setSvelteFiles, svelteFiles)
+      if (files[i].name.slice(-7) === '.svelte'){
+        console.log('Parsing:',files[i].name);
 
-        // let data;
-        // reader.readAsText(files[i]);
-        // reader.onload = (event) => {
-        
-        //   data = parse({ value: event.target.result});
-        
-        // };
-        // svelteFiles.push(
-        //   {
-        //     fileName: files[i].name,
-        //     parsedData: data,
-        //     childComponents: []
-        //   }
-        // );
+        const data = await sidebarParser(files[i]);
 
+        // search for main file to parse through later
+        if(data.fileName === 'App.svelte' || data.fileName === 'app.svelte'){
+          mainFile = data;
+          //data is a child node
+        }
+
+        // store to global svelte files array
+        svelteFiles.push(data);
+
+
+        // react component rendering (TEMPORARY)
         output.push(<li>{files[i].name}</li>);
 
-        // instead of this, we would look in our array of objects for it and pass that component object in for rendering
-        // if(files[i].name === 'App.svelte' || files[i].name === 'app.svelte'){
-        //   mainFile = files[i];
-        // }
-      }     
+      }
     };
 
-
-    console.log(svelteFiles);
     
+    buildTree(mainFile);
 
+    console.log('svelteFiles',svelteFiles)
     // console.log('accessable files', files);
     // const parse = sidebarParser;
     // parse(files[3]);
+    console.log('output:', output)
     console.log('mainFile:',mainFile);
 
 
-    
+
     // test uploading errors
     setError([
       <ErrorMessage errorCode={12345} errorMessage={'testing123'}/>,
@@ -103,42 +99,69 @@ const App = () => {
 
     setTotalComponents(12);
     setTotalRerendering(9);
-
-    setSvelteFiles(svelteFiles);
     setReactFiles(output);
     setUploaded(true);
 
-    return sidebarParser(mainFile);
-    //console.log('svelteFiles', svelteFiles)
+
   };
 
+            /// ******ended here*****
 
-  return( 
+  // takes in app 
+  const buildTree = (component) => {
+    console.log('inside buid tree',component);
+    // base case
+
+    // search if there are any child components, if there is
+
+    // append children to parent
+
+    // if there is no child, then return 
+
+
+    // recursively call each child component
+    
+    // check current
+
+    // return node
+
+
+    
+  }
+
+  function checkHooks(){
+
+    console.log(svelteFiles)
+  }
+
+
+  return(
     <div >
-      {isUploaded ? 
-        ( 
+      {isUploaded ?
+        (
           <div className="appDisplay">
               <div>
                   {filesDisplay}
                 </div>
               <PerfomanceDisplay {...{errorLog, totalComponents, totalRerendering}}/>
            </div>
-        ): 
+        ):
         (
        <div id='uploadContainer' className="appDisplay">
             <h2>Select the folder you would like to import!</h2>
-            <input 
+            <input
             onChange={(event) => {
               changeHandler(event.target.files);
+              checkHooks()
             }
-          } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>  
-          </div> 
-          
+          } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>
+          </div>
+
         )
       }
     </div>
   );
 };
 
-export default App;      
+export default App;
 
