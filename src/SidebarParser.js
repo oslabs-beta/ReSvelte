@@ -61,8 +61,8 @@ async function readFile(file){
     return new Promise( async (resolve, reject) =>  {
      var fr = new FileReader();  
     fr.onload = () => {
-      console.log('finished', file)
-      resolve(fr.result)
+      console.log('finished', file);
+      resolve(fr.result);
       
     };
     fr.onerror = reject;
@@ -92,7 +92,7 @@ async function parseTree(file) {
     // check if we have parsed this component before
    // if (svelteFiles.some(e => e.fileName === file.fileName)) return;
     const data = svelteParser({ value: reader.result});
-    console.log(data)
+    console.log(data);
 
     for(let i = 0; i < data.children.length; i++){
       if(data.children[i].type === 'svelteElement' || data.children[i].type === 'svelteComponent' || data.children[i].type === 'svelteScript'){    
@@ -105,6 +105,7 @@ async function parseTree(file) {
      
     };
 
+  
     fileObj.fileName = file.name;
     fileObj.children = childComponents;
     
@@ -115,9 +116,9 @@ async function parseTree(file) {
    reader.readAsText(file);
  });
 
-  console.log('starting:', file.name)
+  console.log('starting:', file.name);
   // console.log('current file', file)
-  return readFile(file)
+  return readFile(file);
 
   // console.log('awaited:', await readFile(file))
   //const data = await readFile(file)
