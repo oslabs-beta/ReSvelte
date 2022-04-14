@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import sidebarParser from "./SidebarParser";
 import PerfomanceDisplay from './components/performanceDisplay';
 import ErrorMessage from './components/errorMessage';
+import FileNode from './components/fileNode';
 
 
 
@@ -21,7 +22,12 @@ const App = () => {
   const [filesDisplay, setReactFiles] = useState([]);
   const reader = new FileReader();
 
+
+
   const svelteFiles = [];
+  //let root;
+  const [root, setRoot] = useState();
+  let mainFile;
 
   // STRETCH FEATURE : Create a render tree function so that user may upload another file at any given moment and it will rerender tree
 
@@ -50,7 +56,7 @@ const App = () => {
 //File is an object that is inside of FileList
 
     const output = [];
-    let mainFile;
+    
 
     for (let i = 0; i < files.length; i++) {
       if (files[i].name.slice(-7) === '.svelte'){
@@ -74,17 +80,11 @@ const App = () => {
       }
     };
 
+    console.log('svelteFiles',svelteFiles);
+    //root = await buildTree(mainFile);
+    setRoot(await buildTree(mainFile));
     
-    buildTree(mainFile);
-
-    console.log('svelteFiles',svelteFiles)
-    // console.log('accessable files', files);
-    // const parse = sidebarParser;
-    // parse(files[3]);
-    console.log('output:', output)
-    console.log('mainFile:',mainFile);
-
-
+ 
 
     // test uploading errors
     setError([
@@ -107,12 +107,18 @@ const App = () => {
 
             /// ******ended here*****
 
-  // takes in app 
+  // takes in fileObj, maybe import this as a function to clean up code?
   const buildTree = (component) => {
-    console.log('inside buid tree',component);
+    console.log('inside build tree',component);
+
+    const currNode = <FileNode children={component.children} fileName={component.fileName}/>;
+    // create the react component of the component
+
+
     // base case
 
     // search if there are any child components, if there is
+    
 
     // append children to parent
 
@@ -126,12 +132,12 @@ const App = () => {
     // return node
 
 
-    
-  }
+    return currNode;
+  };
 
   function checkHooks(){
 
-    console.log(svelteFiles)
+    console.log(svelteFiles);
   }
 
 
@@ -142,17 +148,23 @@ const App = () => {
           <div className="appDisplay">
               <div>
                   {filesDisplay}
+                  
                 </div>
+                <h2> Component Tree </h2>
+                <div id='componentTree'>
+                  {root}
+                </div>
+                
               <PerfomanceDisplay {...{errorLog, totalComponents, totalRerendering}}/>
            </div>
         ):
         (
        <div id='uploadContainer' className="appDisplay">
-            <h2>Select the folder you would like to import!</h2>
+            <h2 className="selectFolder">Select the folder you would like to import!</h2>
             <input
             onChange={(event) => {
               changeHandler(event.target.files);
-              checkHooks()
+              checkHooks();
             }
           } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>
           </div>

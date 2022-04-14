@@ -16,22 +16,29 @@
 $borderColor: white;
 $fillColor: white;
 
-
-
 .appDisplay{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px solid white;
+  border-radius: 5px;
+    // .selectFolder {
+    // border: 1px white solid;
+    // }
 
+    // #uploadButton {
+    //   font-weight: bold;
+    //   font-size: 25px;
+
+    // }
+}
 
 #performanceDisplay{
 
   $secondaryColor:rgb(193, 193, 193);
   $thirdColor: rgb(142, 142, 142);
   $displayComponentBackground: rgb(177, 177, 177);
-
 
   color: black;
 
@@ -40,9 +47,6 @@ $fillColor: white;
   min-width: 100px;
 
   margin: 3%;
-  
-
-
 
   border-style: solid;
   border-color: $borderColor;
@@ -63,7 +67,6 @@ $fillColor: white;
     align-items: center;
     justify-content: center;
     
-
     gap: 30px;
     margin: 5%;
     width: 90%;
@@ -75,43 +78,28 @@ $fillColor: white;
     border-radius: 10px;
     background-color: $secondaryColor;
 
-    div{
- 
-    }
-
     .display{
       display: flex;
       justify-content: center;
-
       border-style: solid;
       border-color: $thirdColor;
       background-color: $thirdColor;
       border-radius: 10px;
- 
-
       width: 90%; 
     }
-
 
     #Top{
     display: flex;
     justify-content: center;
     gap: 5%;
     width: 95%;
-    
-
-
-
-
     }
 
     #Bottom{
 
-
     }
 
     #Graphs{
-
 
     }
 
@@ -120,11 +108,10 @@ $fillColor: white;
       flex-direction: column;
       justify-content: space-evenly ;
       align-items: center;
-      div{
 
+      div{
         width: 90%;
         height: 90%;
-
         display:flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -142,30 +129,84 @@ $fillColor: white;
       flex-direction: column;
       align-items: center;
       gap: .5vh;  
-
       width: 95%;
       height:100%;
 
       #errorMessage{
-
         flex-direction: row;
         background-color: $displayComponentBackground;
         font-weight: bold;
-
         border-radius: 5px;
         width:95%;
-
-
         padding-left: 10px;
         padding-top: 2px;
         padding-bottom: 2px;
         margin-bottom: .5vh;
-    }
-    
       }
+    }
 
     }
   }
+
+#componentTree{
+$buttonColor: rgb(68, 68, 68);
+$buttonHoverColor:rgb(54, 54, 54);
+$fontColor:rgb(163, 163, 163);
+$componentColor: rgb(110, 110, 110);
+$componentFontColor: rgb(255, 255, 255);
+
+display: flex;
+justify-content: left;
+  #treeNode{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 25px
+
+  }
+  #componentNode{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: $componentColor;
+    background-color: $componentColor;
+    color: $componentFontColor;
+    border-radius: 5px;
+    margin: 3px;
+  }
+
+  #expandButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    border-style: none;
+
+    color: black;
+    border-radius: 5px;
+    margin: 2px;
+  }
+
+  #expandButton:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    border-style: none;
+
+    color: black;
+    border-radius: 5px;
+    margin: 2px;
+  }
+
+  .arrow{
+
+  }
+}
 
 
 
