@@ -4,7 +4,6 @@ import '../styles.scss';
 
 const performanceDisplay = (props) => {
 
-
   return (
     <div id='performanceDisplay'>
         <h1>App Performance</h1>
@@ -32,7 +31,6 @@ const performanceDisplay = (props) => {
               </div>
             </div>
           </div>
-
 
           <div id='errorDisplay' className='display'>
           Error Log
