@@ -3,7 +3,6 @@ import '../styles.scss';
 
 const errorMessage = (props) => {
 
-
   return(
     <div id='errorMessage'>
         {props.errorCode} : {props.errorMessage}
