@@ -56,14 +56,13 @@ const FileNode = (props) => {
               } 
             }
 
-
             // storing tagName in importTag
             const importTag = words[1];
             // input = "../components/B.svelte;"         output = "../components/B.svelte" 
             const importDir = words[words.length - 1];
-
+            console.log('imported as ', importTag)
              console.log('importDir', importDir);
-             // importDir = "../components/B.svelte;"
+            //  importDir = "../components/Button;"
             // for (let i = importDir.length- 1; i > 0; i--) {
 
             // }
@@ -87,20 +86,21 @@ const FileNode = (props) => {
             }
           
             svelteComponentName = svelteComponentName.split('').reverse().join('');
-            svelteComponentName = svelteComponentName.replace('svelte', '');
+            if (svelteComponentName.includes('svelte')) {
+            svelteComponentName = svelteComponentName.replace('svelte', '.svelte');
+            } else {
+              svelteComponentName += '.svelte';}
+
             console.log('this is ittttttttt', svelteComponentName);
+            aliases[importTag] = svelteComponentName;
           } 
-            
-
-
-
-
-
+          console.log('aliases shown here', aliases);
         }
         break;
       }
     }
   }
+
 
   
   //   for(let i = 0; i < props.children.length; i++){
