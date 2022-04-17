@@ -34,7 +34,9 @@ const FileNode = (props) => {
     const [showChildren, setShow] = (0, react_1.useState)(false);
     const [componentChildren, setChildren] = (0, react_1.useState)();
     const aliases = {};
+    /////////////////////////////////////////////////////
     //area to refactor code /// multiple 'for' loops
+    /////////////////////////////////////////////////////
     // creates the tree; file is props
     // don't need to create tree if no children
     function createTree() {
@@ -45,10 +47,8 @@ const FileNode = (props) => {
                 // grab only svelteComponents
                 //<script> tags only take text, cannot have components etc., script elements only have 1 child, text
                 // grab import ... statements
-                // an array that is separated with each new line
-                console.log('children array', props.children[i].children[0].value.split('\n'));
-                let childrenValue = props.children[i].children[0].value.split('\n');
-                //children Value is the text that is in the script
+                console.log('children array', props.children[i].children[0].value.split('\n')); // an array that is separated with each new line
+                let childrenValue = props.children[i].children[0].value.split('\n'); // childrenValue is the text that is in the script
                 for (let i = 0; i < childrenValue.length; i++) {
                     // if element has string .includes('import' && 'from') 
                     if (childrenValue[i].includes('import') && childrenValue[i].includes('from')) {
@@ -59,31 +59,40 @@ const FileNode = (props) => {
                         // Example: currentImport = import B from./B.svelte";
                         // iterate each character and 
                         //split again to get the alias ex. "import B from ./B.svelte", getting the 'B' between import and from
+                        // words = "import B from ./B.svelte"
                         const words = currentImport.split(' ');
-                        // words ['import', 'B', 'from', './B.svelte' ,';']
+                        // words ['import', 'B', 'from', './B.svelte';] 
+                        // './B';
                         for (let i = 0; i < words.length; i++) {
                             if (words[i] === 'from') {
                                 console.log(words[i - 1]); // 'B'  // grabs the word after import
-                                console.log(words[i + 1]); // './B.svelte'  // grabs the path
+                                console.log(words[i + 1]); // './B.svelte;'  // grabs the path
                             }
                         }
-                        //////////////////////pick up here/////////////////////////////////////////
-                        // input = "../../B.svelte"      ;   output = "B.svelte"
-                        const lastword = currentImport[currentImport.length - 1];
-                        //lastword = "../../B.svelte" 
-                        console.log('lastword', lastword);
+                        // storing tagName in importTag
+                        const importTag = words[1];
+                        // input = "../components/B.svelte;"         output = "../components/B.svelte" 
+                        const importDir = words[words.length - 1];
+                        console.log('importDir', importDir);
+                        // importDir = "../components/B.svelte;"
+                        // for (let i = importDir.length- 1; i > 0; i--) {
+                        // }
+                        // importDir = '../compoennt/B.svelte'
                         let svelteComponentName = '';
                         // 
-                        for (let i = lastword.length - 1; i >= 0; i -= 1) {
-                            console.log('in lastword loop', lastword[i]);
-                            if (lastword[i] !== '/') {
-                                svelteComponentName = svelteComponentName.concat(lastword[i]);
-                            }
-                            else {
+                        //       below output: Button.svelte";
+                        //want to remove the ., ",', /, ;
+                        for (let i = importDir.length - 1; i >= 0; i -= 1) {
+                            if (importDir[i] === '/') {
                                 break;
                             }
+                            if (importDir[i] !== ';' && importDir[i] !== '"' && importDir[i] !== " ' " && importDir[i] !== `.`) {
+                                svelteComponentName += importDir[i];
+                            }
                         }
-                        console.log('svelte component name', svelteComponentName);
+                        svelteComponentName = svelteComponentName.split('').reverse().join('');
+                        svelteComponentName = svelteComponentName.replace('svelte', '');
+                        console.log('this is ittttttttt', svelteComponentName);
                     }
                 }
                 break;
