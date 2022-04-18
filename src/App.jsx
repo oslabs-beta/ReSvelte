@@ -23,7 +23,7 @@ const App = () => {
   const [root, setRoot] = useState(); // reference line 107
   let mainFile;
 
-  // STRETCH FEATURE : Create a render tree function so that user may upload another file at any given moment and it will rerender tree
+  //////////////////STRETCH FEATURE : Create a render tree function so that user may upload another file at any given moment and it will rerender tree///////////////////
 
   // handler for when user uploads folder
     // this function will:
@@ -76,9 +76,8 @@ loop below handles:
         /* 
         fileObj 
         {  
-          fileName : file.name;
-          children : childComponents;
-          parsedData : data; (maybe not needed?)
+          fileName : file.name,
+          children : childComponents,
         }
         */
 
@@ -105,7 +104,9 @@ loop below handles:
     // root = await buildTree(mainFile);
     // only need access to one node which will have all the children and nested
     //updated state by invoking FileNode
-    setRoot( <FileNode children={mainFile.children} fileName={mainFile.fileName}/> );
+    
+    // creates tree
+    setRoot( <FileNode children={mainFile.children} fileName={mainFile.fileName} svelteFiles={svelteFiles}/> );
     
  
 

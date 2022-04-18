@@ -34,9 +34,9 @@ const FileNode = (props) => {
     const [showChildren, setShow] = (0, react_1.useState)(false);
     const [componentChildren, setChildren] = (0, react_1.useState)();
     const aliases = {};
-    /////////////////////////////////////////////////////
-    //area to refactor code /// multiple 'for' loops
-    /////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////area to refactor code /// multiple 'for' loops/////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // creates the tree; file is props
     // don't need to create tree if no children
     function createTree() {
@@ -57,11 +57,9 @@ const FileNode = (props) => {
                         const currentImport = childrenValue[i].trim(); //ex. "     import B from ./B.svelte    " ===> "import b from ./b.svelte"
                         console.log('currently imported', currentImport);
                         // Example: currentImport = import B from./B.svelte";
-                        // iterate each character and 
                         //split again to get the alias ex. "import B from ./B.svelte", getting the 'B' between import and from
-                        // words = "import B from ./B.svelte"
                         const words = currentImport.split(' ');
-                        // words ['import', 'B', 'from', './B.svelte';] 
+                        // words = ['import', 'B', 'from', './B.svelte';] 
                         // './B';
                         for (let i = 0; i < words.length; i++) {
                             if (words[i] === 'from') {
@@ -73,8 +71,9 @@ const FileNode = (props) => {
                         const importTag = words[1];
                         // input = "../components/B.svelte;"         output = "../components/B.svelte" 
                         const importDir = words[words.length - 1];
+                        console.log('imported as ', importTag);
                         console.log('importDir', importDir);
-                        // importDir = "../components/B.svelte;"
+                        //  importDir = "../components/Button;"
                         // for (let i = importDir.length- 1; i > 0; i--) {
                         // }
                         // importDir = '../compoennt/B.svelte'
@@ -91,9 +90,16 @@ const FileNode = (props) => {
                             }
                         }
                         svelteComponentName = svelteComponentName.split('').reverse().join('');
-                        svelteComponentName = svelteComponentName.replace('svelte', '');
+                        if (svelteComponentName.includes('svelte')) {
+                            svelteComponentName = svelteComponentName.replace('svelte', '.svelte');
+                        }
+                        else {
+                            svelteComponentName += '.svelte';
+                        }
                         console.log('this is ittttttttt', svelteComponentName);
+                        aliases[importTag] = svelteComponentName;
                     }
+                    console.log('aliases shown here', aliases);
                 }
                 break;
             }
