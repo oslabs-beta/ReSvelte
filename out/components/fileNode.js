@@ -29,7 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 require("../styles.scss");
 const io_1 = require("react-icons/io");
-const Ai_1 = require("react-icons/Ai");
+const ai_1 = require("react-icons/ai");
 const getAliases_1 = __importDefault(require("../parser/getAliases"));
 // filenode component takes in children and filename
 const FileNode = (props) => {
@@ -38,94 +38,71 @@ const FileNode = (props) => {
     const finalList = [];
     const [showChildren, setShow] = (0, react_1.useState)(false);
     const [componentChildren, setChildren] = (0, react_1.useState)();
-    let aliases = {};
-    // aliases = { importname: aliasfileName}
-    // file
+    let aliases = props.aliases;
     // creates the tree; file is props
     function createTree() {
         // has access to the global props
         // search for a script tag and parse
+        console.log(`CREATING TREE FOR ${props.fileName}`);
+        console.log(aliases);
         for (let i = 0; i < props.children.length; i++) {
             // loop to generate aliases from out script tag
+            if (props.children[i].type !== "svelteComponent" && props.children[i].type !== "svelteElement") {
+                continue;
+            }
             if (props.children[i].tagName === "script") {
                 aliases = (0, getAliases_1.default)(props.children[i]);
-                console.log(`Aliases for ${props.children[i]}`, aliases);
+                console.log(`Aliases for ${props.children[i].fileName}`, aliases);
                 continue;
             }
-            if (props.children[i].type !== "svelteComponent" &&
-                props.children[i].type !== "svelteElement") {
-                continue;
-            }
-            console.log('file:', props.children[i].fileName);
-            console.log('type:', props.children[i].type);
+            //recursion for elements like main,p,h1
             if (props.children[i].type === "svelteElement") {
-                childList.push(react_1.default.createElement(FileNode, { children: props.children[i].children, fileName: props.children[i].tagName, fileType: "svelteElement", svelteFiles: props.svelteFiles }));
+                childList.push(react_1.default.createElement(FileNode, { children: props.children[i].children, fileName: props.children[i].tagName, fileType: "svelteElement", svelteFiles: props.svelteFiles, aliases: aliases }));
             }
             else {
-                console.log("this is props.svelteFiles 2", props.svelteFiles);
+                //HOW TO PERSIST ALIASES TO THINGS WE WANT IT TO
+                // AND NOT THINGS WE DON'T WANT IT TO
                 // handles svelte components
                 // SEND ERROR IF IT CANT FIND KEY/VALUE PAIR
+                // 
                 // what we need to do:
                 // SEND ARRAY OF CHILDREN FROM THE MATCHING SVELTEFILES OBJ AS PROPS TO REACT COMPONENT
                 // iterate through the svelteFiles array
-                /////////////clicking main causes it not to work///////////
-                /////////////////pick up here///////////////////
-                for (let i = 0; i < props.svelteFiles.length; i++) {
-                    console.log("aliases:", aliases);
-                    console.log("tagname:", props.children[i].tagName);
-                    console.log("svelteFiles:", props.svelteFiles);
-                    if (props.svelteFiles[i].fileName === aliases[props.children[i].tagName]) {
-                        childList.push(react_1.default.createElement(FileNode, { children: props.svelteFiles[i].children, fileName: props.children[i].tagName, fileType: "svelteComponent", svelteFiles: props.svelteFiles }));
+                //////////////////Stopped here thought about making aliases a state///////
+                console.log('INSIDE A SVELTE COMPONENT:', props.children[i].tagName);
+                console.log('test aliases', aliases);
+                // console.log('searching for alias:', aliases[props.children[i].tagName], 'type:', aliases[props.children[i].tagName])
+                // console.log("aliases:", aliases);
+                let searchStr;
+                let hasAlias = false;
+                if (aliases[props.children[i].tagName]) {
+                    hasAlias = true;
+                    searchStr = aliases[props.children[i].tagName];
+                }
+                if (hasAlias) {
+                    for (let i = 0; i < props.svelteFiles.length; i++) {
+                        console.log('searching svelte files....');
+                        // console.log("tagname:", props.children[i].tagName);
+                        //const svelteFileName = props.svelteFiles[i].fileName.toString();
+                        // console.log('type of svelteFile:', typeof aliases[props.children[i].tagName])
+                        // console.log('alias for this file:', aliases[props.children[i].tagName])
+                        // console.log('the svelteFile ', props.svelteFiles[i])
+                        console.log('looking at', props.svelteFiles[i].fileName, 'type:', typeof props.svelteFiles[i].fileName);
+                        const string = props.svelteFiles[i].fileName;
+                        if (string == searchStr) {
+                            console.log('matchinggg!');
+                            console.log(`Children for ${props.children[i].tagName}`, props.svelteFiles[i].children);
+                            childList.push(react_1.default.createElement(FileNode, { children: props.svelteFiles[i].children, fileName: props.children[i].tagName, fileType: "svelteComponent", svelteFiles: props.svelteFiles, aliases: aliases }));
+                        }
                     }
                 }
-                // for each sveltefile, check if sveltefile.fileName is the same as aliases property value
-                // if it is true
-                // recursive call to <FileNode children = the children from fileNameObj  fileName=     svelteFiles = > sveltefile.children passing in the svelteFiles array as props again
-                //
-                // props.children[i].tagName = B
-                // tagName = B
-                // aliases = {B: B.svelte}
-                // props.svelteFiles = [{filename: B, children: [svelteElement,svelteComponent, svelteScript]}]
+                else {
+                    childList.push(react_1.default.createElement(FileNode, { children: [], fileName: props.children[i].tagName, fileType: "svelteComponent", svelteFiles: props.svelteFiles, aliases: aliases }));
+                }
+                console.log('after test');
             }
         }
     }
-    // for(let i = 0; i < props.children.length; i++){
-    //   // ignore reading scripts for now
-    //   if(props.children[i].tagName === 'script') continue;
-    //   // alias handling, pass alias down as props for each element for reference
-    //   // console.log('yessir', (props.children[0].children[0].value).indexOf(props.children[i].tagName))
-    //   //ignore the combo of svelteComponent and svelteElement
-    //   // different function if we run into svelte element
-    //   // console.log('this is what file looks like', file)
-    //   // if we go into an element we need to push to the last component we were in
-    // }
-    //currently only see the components because we are looking through app.svelte
-    //every component does not have access to the sveltefiles array
-    // need to pass down sveltefiles array to the children to be
-    // loop through newAliases
-    //check to see if the value in newaliass prop matches a svelte file name
-    // if it does
-    // loop through svelte files to find if there is a child
-    //if there is no child, the component is finished, move on to next component
-    // why do we need aliases?
-    // to know what file is really what it is, it knows it's name but doesn't know what it is.
-    // if value is found in sveltefile
-    // what component has what children
-    // connect the renamed components
-    // compare alias to filename, compare children
-    // match between filename and the alias
-    // function getComponents(list){
-    //   console.log('list',list);
-    //   console.log(list[0].props.children);
-    //   for(let i = 0; i < list.length; i++){
-    //     if(list[i].props.children){
-    //       for(let j = 0; j < list[j].props.children.length; j++){
-    //         if(list[i].props.children[j].type === 'svelteComponent'){
-    //           finalList.push(list[i].props.children[j]);
-    //         }
-    //       }
-    //     }
-    //   }
     // recursion to continuously find children
     // if there are children, continuously invoke createTree on line 21
     if (props.children) {
@@ -142,13 +119,13 @@ const FileNode = (props) => {
         // create up arrow icon
         react_1.default.createElement("button", { id: "expandButton", onClick: () => setShow(!showChildren) },
             " ",
-            react_1.default.createElement(Ai_1.AiFillFolderOpen, null),
+            react_1.default.createElement(ai_1.AiFillFolderOpen, null),
             props.fileName,
             react_1.default.createElement(io_1.IoIosArrowUp, { className: "arrow" }))) : (
         // otherwise create down arrow icon
         react_1.default.createElement("button", { id: "expandButton", onClick: () => setShow(!showChildren) },
             " ",
-            react_1.default.createElement(Ai_1.AiFillFolder, null),
+            react_1.default.createElement(ai_1.AiFillFolder, null),
             props.fileName,
             react_1.default.createElement(io_1.IoIosArrowDown, { className: "arrow" })))) : // if no child don't show any button
             null,

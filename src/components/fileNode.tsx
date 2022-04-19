@@ -5,6 +5,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { AiFillFolder, AiFillFolderOpen } from "react-icons/ai";
 
 import getAliases from "../parser/getAliases";
+import { CommentThreadCollapsibleState } from "vscode";
 
 // filenode component takes in children and filename
 const FileNode = (props) => {
@@ -21,24 +22,34 @@ const FileNode = (props) => {
     // has access to the global props
     // search for a script tag and parse
     
-    console.log(`CREATING TREE FOR ${props.fileName}`)
-    console.log(aliases)
+    
+
 
     for (let i = 0; i < props.children.length; i++) {
 
+      console.log('currently on:', props.children[i])
+
       // loop to generate aliases from out script tag
-      if (props.children[i].type !== "svelteComponent" && props.children[i].type !== "svelteElement" ) {
+      if (props.children[i].type !== "svelteComponent" && props.children[i].type !== "svelteElement" && props.children[i].type !== 'svelteScript') {
         continue;
       }
+      console.log('passes type filter')
       
-      if (props.children[i].tagName === "script") {
+      if (props.children[i].type === "svelteScript") {
         aliases = getAliases(props.children[i]);
-        console.log(`Aliases for ${props.children[i].fileName}`, aliases);
+        if (aliases === undefined){
+          aliases = props.aliases;
+        }
+        
+          
+        
+        console.log(`Aliases for line 44 ${props.children[i].fileName}`, aliases);
         continue;
       }
 
       //recursion for elements like main,p,h1
-      if (props.children[i].type === "svelteElement") {
+      else if (props.children[i].type === "svelteElement") {
+        console.log('inside svelte element handler')
         childList.push(
           <FileNode
             children={props.children[i].children}
@@ -48,6 +59,7 @@ const FileNode = (props) => {
             aliases = {aliases}
           />
         );
+        console.log('after svelte element handler', childList)
       } else {
         //HOW TO PERSIST ALIASES TO THINGS WE WANT IT TO
         // AND NOT THINGS WE DON'T WANT IT TO
@@ -61,8 +73,9 @@ const FileNode = (props) => {
         // iterate through the svelteFiles array
 //////////////////Stopped here thought about making aliases a state///////
 
-        console.log('INSIDE A SVELTE COMPONENT:', props.children[i].tagName);
-        console.log('test aliases', aliases)
+        console.log('INSIDE A SVELTE COMPONENT line 70:', props.children[i]);
+        console.log('test aliases line 71', aliases)
+
         // console.log('searching for alias:', aliases[props.children[i].tagName], 'type:', aliases[props.children[i].tagName])
         // console.log("aliases:", aliases);
 
@@ -77,20 +90,20 @@ const FileNode = (props) => {
         
         if(hasAlias){
           for (let i = 0; i < props.svelteFiles.length; i++) {
-            console.log('searching svelte files....');
+            console.log('searching svelte files.... line 87');
             // console.log("tagname:", props.children[i].tagName);
             //const svelteFileName = props.svelteFiles[i].fileName.toString();
             // console.log('type of svelteFile:', typeof aliases[props.children[i].tagName])
             // console.log('alias for this file:', aliases[props.children[i].tagName])
             // console.log('the svelteFile ', props.svelteFiles[i])
 
-            console.log('looking at', props.svelteFiles[i].fileName, 'type:', typeof props.svelteFiles[i].fileName );
+            //console.log('looking at', props.svelteFiles[i].fileName, 'type:', typeof props.svelteFiles[i].fileName );
             const string = props.svelteFiles[i].fileName;
             
 
 
             if ( string == searchStr) {
-              console.log('matchinggg!');
+              console.log('matchinggg! line 93');
 
               console.log(`Children for ${props.children[i].tagName}`, props.svelteFiles[i].children)
               childList.push(
