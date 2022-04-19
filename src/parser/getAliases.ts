@@ -6,6 +6,7 @@ const getAliases = (file) => {
           //<script> tags only take text, cannot have components etc., script elements only have 1 child, text
           // grab import ... statements
           const aliases = {};
+          let foundImports = false;
 
           //console.log('children array', file.children[0].value.split('\n')); // an array that is separated with each new line
           let childrenValue = file.children[0].value.split('\n'); // childrenValue is the text that is in the script
@@ -13,6 +14,7 @@ const getAliases = (file) => {
           for (let i = 0; i < childrenValue.length; i++) {
             // if element has string .includes('import' && 'from')
             if (childrenValue[i].includes('import') && childrenValue[i].includes('from')) {
+              foundImports = true;
               // grab the renamed component and the file name
               //console.log('childrenValue', childrenValue[i]);
               const currentImport = childrenValue[i].trim(); //ex. "     import B from ./B.svelte    " ===> "import b from ./b.svelte"
@@ -59,7 +61,10 @@ const getAliases = (file) => {
             //console.log('aliases shown here', aliases);
           }
 
-          return aliases;
+          if(foundImports){
+            return aliases;
+          }
+          
 
 };
 
