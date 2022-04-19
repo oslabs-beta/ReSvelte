@@ -66,7 +66,6 @@ loop below handles:
     for (let i = 0; i < files.length; i++) {
       // checking if last 7 characters is .svelte
       if (files[i].name.slice(-7) === '.svelte'){
-        console.log('Parsing:',files[i].name);
         // waiting for sidebarParser function to finish before moving on 
         // will only pass in svelte files
         
