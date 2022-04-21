@@ -12,6 +12,7 @@ const FileNode = (props) => {
 
   let childList = [];
   const [showChildren, setShow] = useState(false);
+  let components = props.totalComponents;
   
 
   let aliases = props.aliases;
@@ -52,6 +53,8 @@ const FileNode = (props) => {
             fileType={"svelteElement"}
             svelteFiles={props.svelteFiles}
             aliases = {aliases}
+            setTotalComponents={props.setTotalComponents} 
+            totalComponents={props.totalComponents}
           />
         );
         console.log('Pushed element to child list: ', childList);
@@ -73,9 +76,10 @@ const FileNode = (props) => {
             const string = props.svelteFiles[j].fileName;
 
 
-            if ( string == searchStr) {
+            if ( string === searchStr) {
               console.log('Found!')
 
+              components += 1;
                childList.push(
                 
                 <FileNode 
@@ -83,7 +87,11 @@ const FileNode = (props) => {
                 fileName={props.children[i].tagName} 
                 fileType={"svelteComponent"} 
                 svelteFiles={props.svelteFiles} 
-                aliases={aliases}/>
+                aliases={aliases}
+                setTotalComponents={props.setTotalComponents} 
+                totalComponents={props.totalComponents}
+                />
+                
               );
 
               console.log('Pushed with new alias');
@@ -99,9 +107,12 @@ const FileNode = (props) => {
             fileName={props.children[i].tagName} 
             fileType={"svelteComponent"} 
             svelteFiles={props.svelteFiles} 
-            aliases={aliases}/>
+            aliases={aliases}
+            setTotalComponents={props.setTotalComponents} 
+            totalComponents={props.totalComponents}
+            />
           );
-          console.log('Pushed without matching alias')
+          console.log('Pushed without matching alias');
         }
           
 
@@ -111,6 +122,7 @@ const FileNode = (props) => {
 
       }
     }
+    props.setTotalComponents(props.totalComponents + components);
 
   }
 
