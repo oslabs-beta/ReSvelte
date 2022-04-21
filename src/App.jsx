@@ -10,7 +10,6 @@ const App = () => {
 
   const [isUploaded, setUploaded] = useState(false);
   const [errorLog, setError] = useState([]);
-  const [components, setComponents] = useState([]);
   const [totalComponents, setTotalComponents] = useState(0);
   const [totalRerendering, setTotalRerendering] = useState();
 
@@ -47,6 +46,7 @@ const App = () => {
     
     // files = everything in the folder that was imported e.g. 1129 files
   const changeHandler = async (files) => {
+    console.log('Inside upload handler');
 
 // File is an object that is inside of FileList
 
@@ -63,6 +63,8 @@ loop below handles:
  5. pushed the fileObj to the svelteFiles array
 
 */
+
+console.log(files)
     for (let i = 0; i < files.length; i++) {
       // checking if last 7 characters is .svelte
       if (files[i].name.slice(-7) === '.svelte'){
@@ -99,6 +101,22 @@ loop below handles:
       }
     };
 
+    // invalid svelte project error
+    if (svelteFiles.length === 0) { return setError([...errorLog, <ErrorMessage errorCode={404} errorMessage={'No Svelte Files Detected in Folder'}/>,]);};
+    if (!mainFile) {return setError([...errorLog, <ErrorMessage errorCode={404} errorMessage={'Failed to Locate Root File'}/>]);};
+    
+    setRoot( <FileNode 
+      children={mainFile.children} 
+      fileName={mainFile.fileName} 
+      svelteFiles={svelteFiles} 
+      setTotalComponents={setTotalComponents} 
+      totalComponents={totalComponents}
+      errorLog = {errorLog}
+      setError= {setError}
+      /> );
+    setUploaded(true);
+    
+
     console.log('svelteFiles here',svelteFiles);
    
     // root = await buildTree(mainFile);
@@ -106,29 +124,25 @@ loop below handles:
     //updated state by invoking FileNode
     
     // creates tree
-    setRoot( <FileNode children={mainFile.children} fileName={mainFile.fileName} svelteFiles={svelteFiles} setTotalComponents={setTotalComponents} totalComponents={totalComponents}/> );
+    // setRoot( <FileNode children={mainFile.children} fileName={mainFile.fileName} svelteFiles={svelteFiles} setTotalComponents={setTotalComponents} totalComponents={totalComponents}/> );
     
  
 
     /////// test uploading errors //////////
-    setError([
-      <ErrorMessage errorCode={12345} errorMessage={'testing123'}/>,
-      <ErrorMessage errorCode={9095033204} errorMessage={'call me maybe'}/>,
-      <ErrorMessage errorCode={12} errorMessage={'component error'}/>,
-    ]);
+    // setError([
+    //   <ErrorMessage errorCode={12345} errorMessage={'testing123'}/>,
+    //   <ErrorMessage errorCode={9095033204} errorMessage={'call me maybe'}/>,
+    //   <ErrorMessage errorCode={12} errorMessage={'component error'}/>,
+    // ]);
 
-    setComponents([
-      'someComponent'
-    ]);
 
     //setTotalComponents(12);
     setTotalRerendering(9);
     setReactFiles(output);
-    setUploaded(true);
+    
 
 
   };
-
 
 
   return(
@@ -157,7 +171,17 @@ loop below handles:
 
             }
           } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>
-          </div>
+          
+          {
+            errorLog.length === 0 ?
+            null
+            :
+            <div>
+              <h4>Plase upload another folder</h4>
+              {errorLog}
+            </div>
+          }
+        </div>
 
         )
       }

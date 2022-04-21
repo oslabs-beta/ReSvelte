@@ -6,4 +6,4 @@ export type fileObj = {
 export type svelteFile = {
   children: svelteFile[],
   
-}
+};
