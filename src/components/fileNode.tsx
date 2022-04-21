@@ -5,6 +5,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { AiFillFolder, AiFillFolderOpen } from "react-icons/ai";
 
 import getAliases from "../parser/getAliases";
+import ErrorMessage from "./errorMessage";
 
 
 // filenode component takes in children and filename
@@ -55,6 +56,8 @@ const FileNode = (props) => {
             aliases = {aliases}
             setTotalComponents={props.setTotalComponents} 
             totalComponents={props.totalComponents}
+            errorLog = {props.errorLog}
+            setError = {props.setError}
           />
         );
         console.log('Pushed element to child list: ', childList);
@@ -67,9 +70,15 @@ const FileNode = (props) => {
         if(aliases[props.children[i].tagName]){
           hasAlias = true;
           searchStr = aliases[props.children[i].tagName];
+        } 
+
+        // if it cannot find an alias for the component throw an error
+        if(!hasAlias){
+          props.setError([...props.errorLog, <ErrorMessage errorCode={404} errorMessage={`Failed to Find Import for ${props.children[i].tagName}`}/>])
+          continue;
         }
         
-        if(hasAlias){
+      
           for (let j = 0; j < props.svelteFiles.length; j++) {
             console.log('searching svelte files....', props.children[i]);
 
@@ -90,6 +99,8 @@ const FileNode = (props) => {
                 aliases={aliases}
                 setTotalComponents={props.setTotalComponents} 
                 totalComponents={props.totalComponents}
+                errorLog = {props.errorLog}
+                setError = {props.setError}
                 />
                 
               );
@@ -100,20 +111,20 @@ const FileNode = (props) => {
             }
           }
         }
-        else {
-          childList.push(
-            <FileNode 
-            children={[]} 
-            fileName={props.children[i].tagName} 
-            fileType={"svelteComponent"} 
-            svelteFiles={props.svelteFiles} 
-            aliases={aliases}
-            setTotalComponents={props.setTotalComponents} 
-            totalComponents={props.totalComponents}
-            />
-          );
-          console.log('Pushed without matching alias');
-        }
+        // else {
+        //   childList.push(
+        //     <FileNode 
+        //     children={[]} 
+        //     fileName={props.children[i].tagName} 
+        //     fileType={"svelteComponent"} 
+        //     svelteFiles={props.svelteFiles} 
+        //     aliases={aliases}
+        //     setTotalComponents={props.setTotalComponents} 
+        //     totalComponents={props.totalComponents}
+        //     />
+        //   );
+        //   console.log('Pushed without matching alias');
+        // }
           
 
         
@@ -124,7 +135,7 @@ const FileNode = (props) => {
     }
     props.setTotalComponents(props.totalComponents + components);
 
-  }
+  
 
 
   // recursion to continuously find children

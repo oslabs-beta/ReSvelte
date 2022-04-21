@@ -6,7 +6,6 @@ const errorMessage = (props) => {
   return(
     <div id='errorMessage'>
         {props.errorCode} : {props.errorMessage}
-    "svelte component called, but not imported"
     </div>
   );
 };
