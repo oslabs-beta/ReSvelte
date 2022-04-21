@@ -11,7 +11,7 @@ const App = () => {
   const [isUploaded, setUploaded] = useState(false);
   const [errorLog, setError] = useState([]);
   const [components, setComponents] = useState([]);
-  const [totalComponents, setTotalComponents] = useState();
+  const [totalComponents, setTotalComponents] = useState(0);
   const [totalRerendering, setTotalRerendering] = useState();
 
   //const [svelteFiles, setSvelteFiles] = useState([]);
@@ -100,12 +100,13 @@ loop below handles:
     };
 
     console.log('svelteFiles here',svelteFiles);
+   
     // root = await buildTree(mainFile);
     // only need access to one node which will have all the children and nested
     //updated state by invoking FileNode
     
     // creates tree
-    setRoot( <FileNode children={mainFile.children} fileName={mainFile.fileName} svelteFiles={svelteFiles}/> );
+    setRoot( <FileNode children={mainFile.children} fileName={mainFile.fileName} svelteFiles={svelteFiles} setTotalComponents={setTotalComponents} totalComponents={totalComponents}/> );
     
  
 
@@ -120,7 +121,7 @@ loop below handles:
       'someComponent'
     ]);
 
-    setTotalComponents(12);
+    //setTotalComponents(12);
     setTotalRerendering(9);
     setReactFiles(output);
     setUploaded(true);
