@@ -111,29 +111,9 @@ const FileNode = (props) => {
             }
           }
         }
-        // else {
-        //   childList.push(
-        //     <FileNode 
-        //     children={[]} 
-        //     fileName={props.children[i].tagName} 
-        //     fileType={"svelteComponent"} 
-        //     svelteFiles={props.svelteFiles} 
-        //     aliases={aliases}
-        //     setTotalComponents={props.setTotalComponents} 
-        //     totalComponents={props.totalComponents}
-        //     />
-        //   );
-        //   console.log('Pushed without matching alias');
-        // }
-          
-
-        
-
-
-
       }
     }
-    props.setTotalComponents(props.totalComponents + components);
+    //props.setTotalComponents(props.totalComponents + components);
 
   
 
@@ -141,7 +121,7 @@ const FileNode = (props) => {
   // recursion to continuously find children
   // if there are children, continuously invoke createTree on line 21
   if (props.children) {
-    createTree();
+    createTree()
   }
 
   // if there are no children left to parse, render/return. Don't need to create/continue tree if no children

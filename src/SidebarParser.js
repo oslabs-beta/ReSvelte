@@ -1,4 +1,3 @@
-import { async } from 'regenerator-runtime';
 import { parse } from 'svelte-parse';
 const svelteParser =  parse;
 
@@ -29,6 +28,8 @@ async function sidebarParser(file) {
    // if (svelteFiles.some(e => e.fileName === file.fileName)) return;
    // stores the parsed version of the file
     const parsedData = svelteParser({ value: reader.result});
+
+    console.log('parsedData:', parsedData)
 
       // data has filename and children
     for(let i = 0; i < parsedData.children.length; i++){
