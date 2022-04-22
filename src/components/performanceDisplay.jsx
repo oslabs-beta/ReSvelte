@@ -18,13 +18,13 @@ const performanceDisplay = (props) => {
               <div id='componentStatsDisplays'>
 
                 <div>
-                  <p>Total Components</p>
+                  <p>Total</p>
                   {props.totalComponents}
                 </div>
 
 
                 <div>
-                   <p>Re-rendering Components</p>
+                   <p>Re-rendering</p>
                   {props.totalRerendering}
                 </div>
 
