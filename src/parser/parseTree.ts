@@ -11,6 +11,7 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering) =
 
     let rerendering = 0;
     let total = 0;
+    const rerenderingComponents = [];
     
     // svelteFiles = [{filename: app.svelte, children: []}, {filename: b.svelte, children: []}]
     // aliases =         {B(tagName): b.svelte}
@@ -18,6 +19,8 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering) =
     const parseFile  = (file, parentAliases = {}) => {
       let isRendering = false;
       let aliases = parentAliases;
+
+      
 
       console.log('inside new file:', file)
       console.log('new file aliases:', aliases)
@@ -31,13 +34,11 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering) =
         }
 
         if(file.children[i].type === 'svelteScript'){
-          console.log('setting aliases')
           aliases = getAliases(file.children[i]);
-          console.log('after get aliases:',aliases)
           if(aliases === undefined){
             aliases = parentAliases;
           } 
-          console.log('setAliases', aliases)
+
           continue;
         }
         else if (file.children[i].type === 'svelteDynamicContent' || file.children[i].type === 'svelteBranchingBlock') {
@@ -45,22 +46,25 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering) =
           isRendering = true;
         }
         else if (file.children[i].type === 'svelteComponent') {
-          console.log('aliases:', aliases)
           for (let j = 0 ; j < svelteFiles.length; j++) {
             if (svelteFiles[j].fileName === aliases[file.children[i].tagName]) {
               parseFile(svelteFiles[j], aliases)
             }
           }
-          console.log('added to TOTAL COMPONETS')
           total ++;
         }
 
-
+        file.children[i].parent = file;
         parseFile(file.children[i], aliases)
       }
 
       if(isRendering){
-        console.log('added to TOTAL RERENDERING:', file)
+        console.log('added to TOTAL RERENDERING:', file.parent)
+        let currParent = file.parent;
+        // while(currParent.type !== 'svelteComponent'){
+        //   currParent = currParent.parent
+        // }
+        rerenderingComponents.push(currParent)
         rerendering ++;
       }
       }
@@ -69,14 +73,15 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering) =
 
 
 
-    // rerendering: 4
-    // total: 8
+    // rerendering: 6
+    // total: 10
 
     console.log('starting parse');
     parseFile(root);
 
     console.log('Total components:', total);
     console.log('Total rerendering:', rerendering);
+    console.log('Rerendering Components:', rerenderingComponents)
     setTotalComponents(total);
     setTotalRerendering(rerendering);
 

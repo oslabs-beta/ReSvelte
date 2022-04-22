@@ -38,14 +38,16 @@ async function sidebarParser(file) {
       // svelte element any type of tags that allow us to write anything inside it <main> <div> <h1> etc.
       // svelte component the import at the top of file e.g. import FileButton from ./Button.svelte
       // svelte script basically anything in script tag <script></script>
-      if(parsedData.children[i].type === 'svelteElement' || parsedData.children[i].type === 'svelteComponent' || parsedData.children[i].type === 'svelteScript'){    
+      
+      if(parsedData.children[i].type === 'svelteElement' || parsedData.children[i].type === 'svelteComponent' || parsedData.children[i].type === 'svelteScript' || parsedData.children[i].type === 'svelteBranchingBlock'){    
         // need to parse again? children aren't parsed
-
 
         // parse the svelte element but not components and push that as a children !!!!!!!!!!!!!!!!!!!!!!!!!!! Maybe
         childComponents.push(parsedData.children[i]);
 
       }
+
+
 
      
     };
