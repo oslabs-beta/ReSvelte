@@ -3,18 +3,11 @@ import getAliases from "./getAliases";
 
 const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering) => {
 
-  // Get total components and total rerendering components
-
-  // Root file will be passed in and we will parse every file 
-    // looking for SvelteDynamicContent for rerendering components
-    // total components
-
     let rerendering = 0;
     let total = 0;
     const rerenderingComponents = [];
     
-    // svelteFiles = [{filename: app.svelte, children: []}, {filename: b.svelte, children: []}]
-    // aliases =         {B(tagName): b.svelte}
+
 
     const parseFile  = (file, parentAliases = {}) => {
       let isRendering = false;
@@ -22,8 +15,7 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering) =
 
       
 
-      console.log('inside new file:', file)
-      console.log('new file aliases:', aliases)
+
       if(file.children){
         for (let i = 0; i < file.children.length; i++) {
         console.log('ParseFile:', file.children[i])
@@ -59,12 +51,15 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering) =
       }
 
       if(isRendering){
-        console.log('added to TOTAL RERENDERING:', file.parent)
-        let currParent = file.parent;
-        // while(currParent.type !== 'svelteComponent'){
-        //   currParent = currParent.parent
-        // }
+        let currParent = file;
+
+        while(currParent.parent){
+          currParent = currParent.parent;
+        }
+
         rerenderingComponents.push(currParent)
+
+
         rerendering ++;
       }
       }
