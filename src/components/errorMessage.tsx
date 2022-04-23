@@ -1,7 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 import '../styles.scss';
 
-const errorMessage = (props) => {
+import { errorMessageTypes } from "../types";
+
+const errorMessage : FC<errorMessageTypes> = (props) => {
 
   return(
     <div id='errorMessage'>

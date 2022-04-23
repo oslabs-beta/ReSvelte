@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import "../styles.scss";
 
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { AiFillFolder, AiFillFolderOpen } from "react-icons/ai";
+import { Component } from "react";
+import { FC } from "react";
 
 
+interface fileNode{
+  fileName: string,
+  fileType: string,
+  children: JSX.Element[],
+}
 
-const fileNode = (props) => {
+const fileNode: FC<fileNode> = (props) => {
 
   console.log('children:', props.children)
-  const [showChildren, setShow] = useState(false);
+  const [showChildren, setShow] = useState<Boolean>(false);
 
   return (
     <div id="treeNode">
