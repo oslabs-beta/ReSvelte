@@ -41,12 +41,12 @@ ReSvelte will be updated as needed.
 
 ## Developers
 
-* Hoon Park <a src="www.linkedin.com/in/hoonpvrk">Linkedin</a> <a src="https://github.com/hoonpvrk">Github</a>
-* Martin Ng <a src="http://www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src="https://github.com/Sateeven">Github</a>
-* Jestyn Apuya <a src="https://www.linkedin.com/in/jestynapuya/">Linkedin</a> <a src"https://github.com/JestynA">Github</a>
-* Steven Nguyen <a src="www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src="https://github.com/Sateeven">Github</a>
-* Candie Hill <a src="https://www.linkedin.com/in/candie-hill/">Linkedin</a> <a src="https://github.com/can619">Github</a>
-* Kristina Wallen <a src="https://www.linkedin.com/in/kristina-wallen/">Linkedin</a> <a src="https://github.com/kristinawallen">Github</a>
+* Hoon Park <a src"www.linkedin.com/in/hoonpvrk">Linkedin</a> <a src"https://github.com/hoonpvrk">Github</a>
+* Martin Ng <a src"http://www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src"https://github.com/Sateeven">Github</a>
+* Jestyn Apuya <a src"https://www.linkedin.com/in/jestynapuya/">Linkedin</a> <a src"https://github.com/JestynA">Github</a>
+* Steven Nguyen <a src"www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src"https://github.com/Sateeven">Github</a>
+* Candie Hill <a src"https://www.linkedin.com/in/candie-hill/">Linkedin</a> <a src"https://github.com/can619">Github</a>
+* Kristina Wallen <a src"https://www.linkedin.com/in/kristina-wallen/">Linkedin</a> <a src"https://github.com/kristinawallen">Github</a>
 
 ## Contact Us
 Email: resvelteadm@gmail.com

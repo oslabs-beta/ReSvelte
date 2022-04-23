@@ -13,7 +13,7 @@ async function sidebarParser(file) {
 
 //returning a function that is a promise, takes in 2 params, resolve is a function that sets the status of promise to finished, reject is a catch
   return new Promise( async (resolve, reject) =>  {
-    
+
     var reader = new FileReader();  
     // 97-113 is like a .then
     // svelte parser needs a string, below converts to string and stores in reader
@@ -23,13 +23,14 @@ async function sidebarParser(file) {
     // .onload runs once the above finishes
     reader.onload = () => {
 
+      // console.log('this is the result', reader.result)
 
     // check if we have parsed this component before
    // if (svelteFiles.some(e => e.fileName === file.fileName)) return;
    // stores the parsed version of the file
     const parsedData = svelteParser({ value: reader.result});
 
-    console.log('parsedData:', parsedData)
+   
 
       // data has filename and children
     for(let i = 0; i < parsedData.children.length; i++){

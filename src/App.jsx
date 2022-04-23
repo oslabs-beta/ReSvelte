@@ -4,7 +4,6 @@ import { useState } from "react";
 import sidebarParser from "./SidebarParser";
 import PerfomanceDisplay from './components/performanceDisplay';
 import ErrorMessage from './components/errorMessage';
-import FileNode from './components/fileNode';
 import parseTree from './parser/parseTree';
 
 const App = () => {
@@ -18,6 +17,7 @@ const App = () => {
 
   const svelteFiles = [];
   let mainFile;
+  
 
   
 
@@ -47,7 +47,7 @@ loop below handles:
 
 */
 
-    console.log(files)
+
     for (let i = 0; i < files.length; i++) {
       // checking if last 7 characters is .svelte
       if (files[i].name.slice(-7) === '.svelte'){
@@ -72,18 +72,8 @@ loop below handles:
     if (svelteFiles.length === 0) { return setError([...errorLog, <ErrorMessage errorCode={404} errorMessage={'No Svelte Files Detected in Folder'}/>,]);};
     if (!mainFile) {return setError([...errorLog, <ErrorMessage errorCode={404} errorMessage={'Failed to Locate Root File'}/>]);};
 
-    console.log('calling parse tree');
-    parseTree(mainFile, svelteFiles, setTotalComponents, setTotalRerendering);
-    
-    setRoot( <FileNode 
-      children={mainFile.children} 
-      fileName={mainFile.fileName} 
-      svelteFiles={svelteFiles} 
-      setTotalComponents={setTotalComponents} 
-      totalComponents={totalComponents}
-      errorLog = {errorLog}
-      setError= {setError}
-      /> );
+    console.log('Building tree...');
+    setRoot(parseTree(mainFile, svelteFiles, setTotalComponents, setTotalRerendering, setError, errorLog));
     setUploaded(true);
     
     /////// test uploading errors //////////
