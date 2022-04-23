@@ -1,5 +1,6 @@
 import { Component } from "react";
 
+
 export type fileObj = {
   fileName: string,
   children: parsedSvelte[]
@@ -11,7 +12,7 @@ export type fileObj = {
 export interface fileNode{
   fileName: string,
   fileType: string,
-  children: Component[]
+  children: JSX.Element[]
 }
 
 export interface parsedSvelte{
@@ -35,6 +36,13 @@ export interface errorMessageTypes {
   errorCode: number,
   errorMessage: string
 }
+
+export interface nodeTypes {
+  children: JSX.Element[],
+  fileName: string,
+}
+
+
 
 
 
