@@ -1,4 +1,5 @@
-const getAliases = (file) => {
+
+const getAliases = (file ) : object => {
         // traverse the children of the parsedData
           // grab only svelteComponents
           //<script> tags only take text, cannot have components etc., script elements only have 1 child, text

@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import '../styles.scss';
  
+import { performanceDisplayTypes } from '../types';
 
-const performanceDisplay = (props) => {
+const performanceDisplay : FC<performanceDisplayTypes> = (props) => {
 
   return (
     <div id='performanceDisplay'>

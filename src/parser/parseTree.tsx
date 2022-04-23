@@ -1,29 +1,26 @@
 import getAliases from "./getAliases";
 import FileNode from "../components/fileNode";
-import React from "react";
+import React, { Component } from "react";
 import ErrorMessage from "../components/errorMessage";
 
+import { fileObj , parsedSvelte } from "../types";
 
-const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering, setError, errorLog) => {
+
+
+
+const parseTree = (root :fileObj, svelteFiles: fileObj[], setTotalComponents: Function , setTotalRerendering: Function, setError: Function, errorLog: Component[]): JSX.Element =>  {
 
     let rerendering = 0;
     let total = 0;
-    const rerenderingComponents = [];
+    const rerenderingComponents : (fileObj | parsedSvelte)[] = [];
     
-    let reactRoot = <FileNode fileName={root.fileName} fileType={'svelteComponent'} children={[]}/>;
+    let reactRoot : JSX.Element =  <FileNode fileName={root.fileName} fileType={'svelteComponent'} children={[]}/>;
 
    
 
-    
-
-
-    const parseFile  = (file, parentAliases = {}, parentComponent = reactRoot) => {
-      let isRendering = false;
-      let aliases = parentAliases;
-      let reactChildren = [];
-
-
-
+    const parseFile  = (file: parsedSvelte | fileObj, parentAliases = {}, parentComponent : JSX.Element = reactRoot) => {
+      let isRendering : boolean = false;
+      let aliases : Object = parentAliases;
 
 
       if(file.children.length > 0){
@@ -50,7 +47,7 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering, s
           }
 
           else if (file.children[i].type === 'svelteComponent') {
-            const newComponent = <FileNode fileName={file.children[i].tagName} fileType={'svelteComponent'} children={[]}/>;
+            const newComponent = <FileNode fileName={file.children[i].tagName} fileType={file.children[i].type} children={[]}/>;
             
             let hasAlias = false;
             for (let j = 0 ; j < svelteFiles.length; j++) {
@@ -68,7 +65,7 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering, s
           } 
           else{
             // type of svelteElement
-            const newComponent = (<FileNode fileName={file.children[i].tagName} fileType={'svelteElement'} children={[]}/>);
+            const newComponent = (<FileNode fileName={file.children[i].tagName} fileType={file.children[i].type} children={[]}/>);
 
             parseFile(file.children[i], aliases, newComponent);
             parentComponent.props.children.push(newComponent);
@@ -80,7 +77,7 @@ const parseTree = (root, svelteFiles, setTotalComponents, setTotalRerendering, s
 
         if(isRendering){
           // storing the rerendering components
-          let currParent = file;
+          let currParent : fileObj | parsedSvelte = file;
           while(currParent.parent){
             currParent = currParent.parent;
           }

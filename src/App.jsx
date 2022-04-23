@@ -72,6 +72,7 @@ loop below handles:
     if (svelteFiles.length === 0) { return setError([...errorLog, <ErrorMessage errorCode={404} errorMessage={'No Svelte Files Detected in Folder'}/>,]);};
     if (!mainFile) {return setError([...errorLog, <ErrorMessage errorCode={404} errorMessage={'Failed to Locate Root File'}/>]);};
 
+    console.log('Imported Files:', svelteFiles);
     console.log('Building tree...');
     setRoot(parseTree(mainFile, svelteFiles, setTotalComponents, setTotalRerendering, setError, errorLog));
     setUploaded(true);
