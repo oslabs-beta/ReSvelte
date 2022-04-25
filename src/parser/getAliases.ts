@@ -40,7 +40,7 @@ const getAliases = (file ) : object => {
                   break;                                                // break because we don't want anything after the /
                 }
                 // ignore any ., ",', /, ;
-                if (importDir[i] !== ';' && importDir[i] !== '"' && importDir[i] !== " ' "&& importDir[i] !== `.` ) {   
+                if (importDir[i] !== ';' && importDir[i] !== '"' && importDir[i] !== "'"&& importDir[i] !== `.` ) {   
                 // currently reversed / incorrect -> etlevsB
                   svelteComponentName += importDir[i];                                                         
                 }
