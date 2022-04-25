@@ -13,16 +13,21 @@ import parseTree from './parser/parseTree';
 
 const App = () => {
 
+ 
   const [isUploaded, setUploaded] = useState(false);
+  const [newProject, setNewProject] = useState(false);
+
+  const [filesDisplay, setReactFiles] = useState([]);
+  const [root, setRoot] = useState(); // reference line 107
+
   const [errorLog, setError] = useState([]);
   const [totalComponents, setTotalComponents] = useState(0);
   const [totalRerendering, setTotalRerendering] = useState(0);
-  const [filesDisplay, setReactFiles] = useState([]);
-  const [root, setRoot] = useState(); // reference line 107
-  const [newProject, setNewProject] = useState(false);
+ 
 
   const svelteFiles = [];
   let mainFile;
+ 
   
   const reset = () => {
     setUploaded(false);
@@ -96,8 +101,10 @@ loop below handles:
     setUploaded(true);
 
 
+
   };
 
+  
 
 
   return(
@@ -144,22 +151,20 @@ loop below handles:
          </div>
         ):
         (
-       <div id='uploadContainer' className="appDisplay">
+
+          <div id='uploadContainer' className="appDisplay">
             <h1 className="selectFolder">Upload Project</h1>
             Please import your project folder below
             <br/>
             <br/>
-            
-            <input
-            onChange={(event) => {
-              
-              console.log('input:',event.target)
-              changeHandler(event.target.files);
-
-            }
-          } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>
           
-          {
+            <input 
+            onChange={(event) => {
+              changeHandler(event.target.files);
+            }
+            } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>
+          
+            {
             errorLog.length === 0 ?
             null
             :
@@ -167,14 +172,16 @@ loop below handles:
               <h4>Please upload another folder</h4>
               {errorLog}
             </div>
-          }
-        </div>
+            }
+            
 
+          </div>
         )
-      }
-    </div>
-  );
+    }
+  </div>)
 };
 
 export default App;
+
+
 

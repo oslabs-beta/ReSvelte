@@ -24,7 +24,9 @@ const parseTree = (root :fileObj, svelteFiles: fileObj[], setTotalComponents: Fu
 
 
       if(file.children.length > 0){
+   
         for (let i = 0; i < file.children.length; i++) {
+
 
 
           file.children[i].parent = file;
