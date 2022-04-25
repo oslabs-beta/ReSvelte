@@ -1,15 +1,25 @@
 <div align="center">
   <a href="https://github.com/oslabs-beta/ReSvelte"></a>
-  <img src="/assets/banner.png" alt="bannerLogo" width="100%">
+  <img src='./assets/RS.png' alt="bannerLogo" width="100%">
 </div>
+
 # ReSvelte README
 
-Welcome to ReSvelte y'all. This is a VS Code extension that will allow developers to visualize component trees and performance metrics for their .svelt applications. 
+Welcome to ReSvelte, a VS Code extension performance developer tool that generates a Svelte component tree visualizer and a component rendering metrics display. 
+
 
 ## Features
 
 <!-- Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file. -->
+How to install from VSCode Marketplace
 
+Importing a Svelte file into the extension
+
+<img src='./assets/ReSvelteUploadSvelteFile.gif' alt='upload of Svelte document' width="100%">
+
+Opening and closing the component tree visualizer
+
+Viewing the Performance display
 <!-- For example if there is an image subfolder under your extension project workspace: -->
 
 <!-- \!\[feature X\]\(images/feature-x.png\) -->
@@ -18,13 +28,13 @@ Welcome to ReSvelte y'all. This is a VS Code extension that will allow developer
 
 ## Installation
 
-1. Install ReSvelte in the VSCode Extension MarketPlace
+1. Search for ReSvelte in the VSCode Extension MarketPlace and install. 
 
-2. A ReSvelte icon should appear on your sidebar. you have successfully installed ReSvelte! ^__^
+2. A ReSvelte icon should appear on your sidebar. You have successfully installed ReSvelte! 
 
-3. Upload your Svelte folder and if message "folder uploaded", you are all set
+3. Upload your Svelte folder. If there is an error, you will see an error message.  
 
-5. Tree Visualizer should now be populated in the sidebar
+4. Tree Visualizer should now be populated in the sidebar
 <!-- If you have any requirements or dependencies, add a section describing those and how to install and configure them. -->
 
 <!-- To get started, execute "npm i" in your terminal -->
@@ -41,10 +51,10 @@ ReSvelte will be updated as needed.
 
 ## Developers
 
-* Hoon Park <a src"www.linkedin.com/in/hoonpvrk">Linkedin</a> <a src"https://github.com/hoonpvrk">Github</a>
+* Hoon Park <a src"https://www.linkedin.com/in/hoonpvrk">Linkedin</a> <a src"https://github.com/hoonpvrk">Github</a>
 * Martin Ng <a src"http://www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src"https://github.com/Sateeven">Github</a>
 * Jestyn Apuya <a src"https://www.linkedin.com/in/jestynapuya/">Linkedin</a> <a src"https://github.com/JestynA">Github</a>
-* Steven Nguyen <a src"www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src"https://github.com/Sateeven">Github</a>
+* Steven Nguyen <a src"https://www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src"https://github.com/Sateeven">Github</a>
 * Candie Hill <a src"https://www.linkedin.com/in/candie-hill/">Linkedin</a> <a src"https://github.com/can619">Github</a>
 * Kristina Wallen <a src"https://www.linkedin.com/in/kristina-wallen/">Linkedin</a> <a src"https://github.com/kristinawallen">Github</a>
 
