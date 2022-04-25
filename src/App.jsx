@@ -1,23 +1,37 @@
 import React from "react";
 import { useState } from "react";
+import './styles.scss';
 
 import sidebarParser from "./SidebarParser";
 import PerfomanceDisplay from './components/performanceDisplay';
 import ErrorMessage from './components/errorMessage';
 import parseTree from './parser/parseTree';
 
+
+
+
+
 const App = () => {
 
   const [isUploaded, setUploaded] = useState(false);
   const [errorLog, setError] = useState([]);
   const [totalComponents, setTotalComponents] = useState(0);
-  const [totalRerendering, setTotalRerendering] = useState();
+  const [totalRerendering, setTotalRerendering] = useState(0);
   const [filesDisplay, setReactFiles] = useState([]);
   const [root, setRoot] = useState(); // reference line 107
+  const [newProject, setNewProject] = useState(false);
 
   const svelteFiles = [];
   let mainFile;
   
+  const reset = () => {
+    setUploaded(false);
+    setError([]);
+    setTotalComponents(0);
+    setTotalRerendering(0);
+    setReactFiles([]);
+    setRoot();
+  }
 
   
 
@@ -75,14 +89,15 @@ loop below handles:
     console.log('Imported Files:', svelteFiles);
     console.log('Building tree...');
     setRoot(parseTree(mainFile, svelteFiles, setTotalComponents, setTotalRerendering, setError, errorLog));
-    setUploaded(true);
+    
     
     /////// test uploading errors //////////
     setReactFiles(output);
-    
+    setUploaded(true);
 
 
   };
+
 
 
   return(
@@ -90,23 +105,55 @@ loop below handles:
       {isUploaded ?
         (
           <div className="appDisplay">
-              <div>
-                  {filesDisplay}
-                  
-                </div>
-                <h2> Component Tree </h2>
-                <div id='componentTree'>
-                  {root}
-                </div>
+
+            <div>
+              {/*<h2>Current project: {mainFile.fileName}</h2>*/}
+              <h2>Imported components:</h2>
+              {filesDisplay}                  
+            </div>
+
+            <h2> Component Tree </h2>
+
+            <div id='componentTree'>
+              {root}
+            </div>
                 
-              <PerfomanceDisplay {...{errorLog, totalComponents, totalRerendering}}/>
-           </div>
+            <PerfomanceDisplay {...{errorLog, totalComponents, totalRerendering}}/>
+           
+            {newProject? 
+              (
+                <div>
+                Upload project <br/><br/>
+                  <input
+                  onChange={(event) => {
+                    reset();
+                    console.log('input:',event.target)
+                    changeHandler(event.target.files);
+      
+                  }
+                } id='uploadButton' directory="" webkitdirectory="" type="file" ></input>
+                </div>
+              )
+              :
+              (
+                <div>
+                Want to start a new project? <a onClick={() => {setNewProject(true)}} id='newProject'>Click here!</a>
+                </div>)
+            }
+          
+         </div>
         ):
         (
        <div id='uploadContainer' className="appDisplay">
-            <h2 className="selectFolder">Select the folder you would like to import!</h2>
+            <h1 className="selectFolder">Upload Project</h1>
+            Please import your project folder below
+            <br/>
+            <br/>
+            
             <input
             onChange={(event) => {
+              
+              console.log('input:',event.target)
               changeHandler(event.target.files);
 
             }
@@ -117,7 +164,7 @@ loop below handles:
             null
             :
             <div>
-              <h4>Plase upload another folder</h4>
+              <h4>Please upload another folder</h4>
               {errorLog}
             </div>
           }

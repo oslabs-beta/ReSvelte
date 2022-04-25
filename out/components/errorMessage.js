@@ -9,8 +9,7 @@ const errorMessage = (props) => {
     return (react_1.default.createElement("div", { id: 'errorMessage' },
         props.errorCode,
         " : ",
-        props.errorMessage,
-        "\"svelte component called, but not imported\""));
+        props.errorMessage));
 };
 exports.default = errorMessage;
 //# sourceMappingURL=errorMessage.js.map

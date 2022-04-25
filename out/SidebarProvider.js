@@ -64,7 +64,7 @@ class SidebarProvider {
 				<title>ReSvelte</title>
 			</head>
 			<body>
-				<div id="root">inside Div</div>
+				<div id="root">Loading extension...</div>
 				<script  src="${scriptUri}"></script>
 			</body>
 			</html>`;

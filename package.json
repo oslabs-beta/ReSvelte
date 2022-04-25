@@ -20,7 +20,7 @@
         {
           "id": "resvelte-sidebar-view",
           "title": "ReSvelte",
-          "icon": "assets/ReSvelte.svg"
+          "icon": "assets/ReSvelteLogo.svg"
         }
       ]
     },
@@ -30,7 +30,7 @@
           "type": "webview",
           "id": "ReSvelte-Sidebar",
           "name": "ReSvelte",
-          "icon": "assets/ReSvelte.svg",
+          "icon": "assets/ReSvelteLogo.svg",
           "contextualTitle": "ReSvelte"
         }
       ]

@@ -1,17 +1,4 @@
-/* #import{
-  width: 100px;
-  height: 20px;
-  border: solid 1px black;
-  padding: 5px;
-  background-color: white;
-}
 
-#import:hover{
-  cursor:pointer;
-  background-color: white;
-  color: black;
-  transition: 0.4s;
-} */
 
 $borderColor: white;
 $fillColor: white;
@@ -21,8 +8,8 @@ $fillColor: white;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  border: 1px solid white;
-  border-radius: 5px;
+  // border: 1px solid white;
+  // border-radius: 5px;
     // .selectFolder {
     // border: 1px white solid;
     // }
@@ -32,6 +19,10 @@ $fillColor: white;
     //   font-size: 25px;
 
     // }
+    #newProject:hover{
+      cursor: pointer;
+
+    }
 }
 
 #performanceDisplay{
