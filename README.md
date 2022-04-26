@@ -1,16 +1,20 @@
 <div id='resvelte' align="center">
   <a href="https://github.com/oslabs-beta/ReSvelte" alt='link to ReSvelte GitHub'>
-    <img src='./assets/RS.png' alt="ReSvelte Logo" width="75%">
+    <img src="https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/RS.png" alt="ReSvelte Logo" width="75%">
   </a>
 </div>
 
+<!-- when i copied the image address on github
+https://github.com/oslabs-beta/ReSvelte/blob/candie/readme2/assets/smallResvelte.png?raw=true
+https://github.com/oslabs-beta/ReSvelte/blob/candie/readme2/assets/RS.png?raw=true
+-->
 
 <div align='center'id='name'>
   <h1>ReSvelte</h1>
   A Svelte component tree visualizer and metrics display tool
 
   <a href='https://github.com/oslabs-beta/ReSvelte/issues'>Report Issues</a>
-  <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+  <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
   <a href='https://github.com/oslabs-beta/ReSvelte/issues'>Request a Feature</a>
 
 </div>
