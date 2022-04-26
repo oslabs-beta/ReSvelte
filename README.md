@@ -43,9 +43,11 @@ ReSvelte solves this issue. It is a performance developer tool that generates a 
 
 <img src='./assets/OpeningComponent.gif' alt='opening the component tree visulizer' width="100%">
 
-6. Underneath the tree, the app performance shows the total number of components rendered in your application and the number of components that can re-render.
+6. Underneath the tree, the app performance shows the total number of components rendered in your application and the number of components that can re-render. An error log will also report any import issues.
 
-## Built With
+<img src='./assets/Errorlog.gif' alt='app performance with error log message' width="100%">
+
+## Techonology Stack
 <div id='technologies'>
   <li>
     <img src='./assets/react.png' alt='React logo' width='14' height='14' >
@@ -85,17 +87,19 @@ ReSvelte solves this issue. It is a performance developer tool that generates a 
 
 3. Run the command: `npm install`
 
-4. Run the command: `npm run watch`
+4. Run the command: `npm run build`
 
-5. Press F5. Click "Debug Anyways". This will open the development extension to allow debugging and view the ReSvelte extension. 
+5. Run the command: `npm run watch`
 
-6. Click the 'RS' ReSvelte extension button on the left panel
+6. Press F5. Click "Debug Anyways". This will open the development extension to allow debugging and view the ReSvelte extension. 
 
-7. Proceed to upload a Svelte folder 
+7. Click the 'RS' ReSvelte extension button on the left panel
 
-8. Press `command, shift, P` then type into the search bar "Developer: Open Webview Tools" to see the dev tools panel
+8. Proceed to upload a Svelte folder 
 
-9. If you make a change to the code, press the green restart button on the original code editor debugging bar. This will restart the development extension. Then repeat step 7.
+9. Press `command, shift, P` then type into the search bar "Developer: Open Webview Tools" to see the dev tools panel
+
+10. If you make a change to the code, press the green restart button on the original code editor debugging bar. This will restart the development extension. Then repeat step 7.
 
 ## What to Contribute
 
@@ -108,6 +112,8 @@ ReSvelte is an open source tool. Contributions are what make the open source com
 <li>Automatically find components in the imported application that aren’t running as expected and draw the user to that area</li>
 <li>A time machine that will allow users to make changes without risking the current state of the application</li>
 <li>Live updating of extension</li>
+
+### Suggestions
 
 We would love to hear your technical feedback! If you have suggestions, simply open an issue with the tag "enhancement". 
 
@@ -154,7 +160,7 @@ Distributed under the MIT License. See `LICENSE` for more information
 
 Email: resvelteadm@gmail.com 
 
-Website: http://resvelte.com/
+Website: https://resvelte.com/
 
 
 
