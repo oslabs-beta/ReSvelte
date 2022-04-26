@@ -1,10 +1,14 @@
 {
   "name": "resvelte",
   "displayName": "ReSvelte",
-  "description": "Debugging tool for re-rendering components in Svelte",
+  "description": "Developer tool for Svelte generating a component tree visualizer and metrics display for re-rendering components in Svelte",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.66.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oslabs-beta/ReSvelte"
   },
   "categories": [
     "Other"

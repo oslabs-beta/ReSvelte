@@ -1,79 +1,158 @@
-<div align="center">
-  <a href="https://github.com/oslabs-beta/ReSvelte"></a>
-  <img src="/assets/banner.png" alt="bannerLogo" width="100%">
+<div id='resvelte' align="center">
+  <a href="https://github.com/oslabs-beta/ReSvelte" alt='link to ReSvelte GitHub'>
+    <img src='./assets/RS.png' alt="ReSvelte Logo" width="75%">
+  </a>
 </div>
-# ReSvelte README
-
-Welcome to ReSvelte y'all. This is a VS Code extension that will allow developers to visualize component trees and performance metrics for their .svelt applications. 
-
-## Features
-
-<!-- Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file. -->
-
-<!-- For example if there is an image subfolder under your extension project workspace: -->
-
-<!-- \!\[feature X\]\(images/feature-x.png\) -->
-
-<!-- > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow. -->
-
-## Installation
-
-1. Install ReSvelte in the VSCode Extension MarketPlace
-
-2. A ReSvelte icon should appear on your sidebar. you have successfully installed ReSvelte! ^__^
-
-3. Upload your Svelte folder and if message "folder uploaded", you are all set
-
-5. Tree Visualizer should now be populated in the sidebar
-<!-- If you have any requirements or dependencies, add a section describing those and how to install and configure them. -->
-
-<!-- To get started, execute "npm i" in your terminal -->
-<!-- Execute 'npm run build' in the terminal to get the application started -->
-<!-- 'npm install' to install all the dependencies -->
-## Technologies Used 
-
-React, Typescript, Svelte, React Hooks
-
-## What Needs Work?
-
-None so far!
-ReSvelte will be updated as needed.
-
-## Developers
-
-* Hoon Park <a src"www.linkedin.com/in/hoonpvrk">Linkedin</a> <a src"https://github.com/hoonpvrk">Github</a>
-* Martin Ng <a src"http://www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src"https://github.com/Sateeven">Github</a>
-* Jestyn Apuya <a src"https://www.linkedin.com/in/jestynapuya/">Linkedin</a> <a src"https://github.com/JestynA">Github</a>
-* Steven Nguyen <a src"www.linkedin.com/in/nguyennsteven">Linkedin</a> <a src"https://github.com/Sateeven">Github</a>
-* Candie Hill <a src"https://www.linkedin.com/in/candie-hill/">Linkedin</a> <a src"https://github.com/can619">Github</a>
-* Kristina Wallen <a src"https://www.linkedin.com/in/kristina-wallen/">Linkedin</a> <a src"https://github.com/kristinawallen">Github</a>
-
-## Contact Us
-Email: resvelteadm@gmail.com
-
-Website: resvelte.com
 
 
-// END READ ME
------------------------------------------------------------------------------------------------------------
-## Following extension guidelines
+<div align='center'id='name'>
+  <h1>ReSvelte</h1>
+  A Svelte component tree visualizer and metrics display tool
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+  <a href='https://github.com/oslabs-beta/ReSvelte/issues'>Report Issues</a>
+  <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+  <a href='https://github.com/oslabs-beta/ReSvelte/issues'>Request a Feature</a>
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+</div>
 
-## Working with Markdown
+# About ReSvelte
 
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+As developers create Svelte applications, the component tree increasingly scales in size. Components are a delicate part of front end frameworks. Efficiently placing and correctly executing components are of high importance.
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
+Having more components re-rendering, will affect the general performance of the application.
 
-### For more information
+ReSvelte solves this issue. It is a performance developer tool that generates a Svelte component tree visualizer and a component rendering metrics display of your Svelte application within a Visual Studio Code extension. 
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+# Getting Started with Installation and Usage
+
+1. If not already installed, install Visual Studio Code for your respective operating system. <a href='https://code.visualstudio.com/download'>Download Visual Studio Code</a>
+
+2. Search for ReSvelte in the Visual Studio Code Extension MarketPlace and install. 
+
+3. A ReSvelte icon should appear on your sidebar. You have successfully installed ReSvelte! 
+
+4. Upload your Svelte folder. If there is an error, you will see an error message.  
+
+<img src='./assets/ImportingSvelteFile.gif' alt='upload of Svelte document' width="100%">
+
+5. The component tree visualizer should now be populated in the sidebar with the component name. Toggle through the down arrows to expand the tree. 
+
+<img src='./assets/OpeningComponent.gif' alt='opening the component tree visulizer' width="100%">
+
+6. Underneath the tree, the app performance shows the total number of components rendered in your application and the number of components that can re-render.
+
+## Built With
+<div id='technologies'>
+  <li>
+    <img src='./assets/react.png' alt='React logo' width='14' height='14' >
+    React with React Hooks
+  </li>
+  <li>
+    <img src='./assets/vscode.png' alt='VSCode logo' width='14' height='14' >
+    Visual Studio Code Extension API
+  </li>
+  <li>
+    <img src='./assets/typescript.png' alt='Typescript logo' width='14' height='14' >
+    Typescript
+  </li>
+  <li>
+    <img src='./assets/Svelte.png' alt='Svelte logo' width='14' height='14' >
+    Svelte
+  </li>
+  <li>Svelte-Parse</li>
+  <li>
+    <img src='./assets/Webview.png' alt='Webview logo' width='14' height='14' >
+    WebView
+  </li>
+  <li>
+    <img src='./assets/webpack2.png' alt='Webpack logo' width='14' height='14' >
+    Webpack</li>
+  <li>
+    <img src='./assets/Sass.png' alt='Sass/Css logo' width='14' height='14' >
+    SCSS/SASS
+  </li>
+</div>
+
+# Getting Started as a Contributor
+
+1. Clone ReSvelte from GitHub
+
+2. Open the ReSvelte folder in your VS Code IDE. 
+
+3. Run the command: `npm install`
+
+4. Run the command: `npm run watch`
+
+5. Press F5. Click "Debug Anyways". This will open the development extension to allow debugging and view the ReSvelte extension. 
+
+6. Click the 'RS' ReSvelte extension button on the left panel
+
+7. Proceed to upload a Svelte folder 
+
+8. Press `command, shift, P` then type into the search bar "Developer: Open Webview Tools" to see the dev tools panel
+
+9. If you make a change to the code, press the green restart button on the original code editor debugging bar. This will restart the development extension. Then repeat step 7.
+
+## What to Contribute
+
+ReSvelte is an open source tool. Contributions are what make the open source community such an amazing place to learn, inspire, create, and grow. Any contributions you make are greatly appreciated. Here are some features that could improve this application and build upon the core functionality:
+
+<li>Store the paths of all files which would allow the user to click on a component and be taken to that file for further editing or confirmation</li>
+<li>Adding render time to the performance metrics</li>
+<li>Tracking memory usage of an imported application</li>
+<li>Add a link in the component tree to show the hierarchy</li>
+<li>Automatically find components in the imported application that aren’t running as expected and draw the user to that area</li>
+<li>A time machine that will allow users to make changes without risking the current state of the application</li>
+<li>Live updating of extension</li>
+
+We would love to hear your technical feedback! If you have suggestions, simply open an issue with the tag "enhancement". 
+
+Don't forget to give this developer tool a star. Thank you for your contribution!
+
+# License
+Distributed under the MIT License. See `LICENSE` for more information
+
+# Contributors
+<div id='contributors'>
+  <li> 
+    Hoon Park 
+    <a href="https://www.linkedin.com/in/hoonpvrk">LinkedIn</a> 
+    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+    <a href="https://github.com/hoonpvrk">GitHub</a>
+  </li>
+  <li> 
+    Martin Ng 
+    <a href="https://www.linkedin.com/in/martinngsf/">LinkedIn</a> 
+    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+    <a href="https://github.com/kamartinng">GitHub</a>
+  </li>
+  <li>
+    Jestyn Apuya 
+    <a href="https://www.linkedin.com/in/jestynapuya/">LinkedIn</a> 
+    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+    <a href="https://github.com/JestynA">GitHub</a>
+  </li>
+  <li>
+    Steven Nguyen 
+    <a href="https://www.linkedin.com/in/nguyennsteven">LinkedIn</a> 
+    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' > 
+    <a href="https://github.com/Sateeven">GitHub</a>
+  </li>
+  <li>
+    Candie Hill 
+    <a href="https://www.linkedin.com/in/candie-hill/">LinkedIn</a> 
+    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+    <a href="https://github.com/can619">GitHub</a>
+  </li>
+</div>
+
+# Contact Us
+
+Email: resvelteadm@gmail.com 
+
+Website: http://resvelte.com/
+
+
 
 
 
