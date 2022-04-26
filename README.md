@@ -32,49 +32,52 @@ ReSvelte solves this issue. It is a performance developer tool that generates a 
 1. If not already installed, install Visual Studio Code for your respective operating system. <a href='https://code.visualstudio.com/download'>Download Visual Studio Code</a>
 
 2. Search for ReSvelte in the Visual Studio Code Extension MarketPlace and install. 
+  <a href='https://marketplace.visualstudio.com/items?itemName=ReSvelte.resvelte'>
+  Download ReSvelte Here!
+  </a>
 
 3. A ReSvelte icon should appear on your sidebar. You have successfully installed ReSvelte! 
 
 4. Upload your Svelte folder. If there is an error, you will see an error message.  
 
-<img src='./assets/ImportingSvelteFile.gif' alt='upload of Svelte document' width="100%">
+<img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/ImportingSvelteFile.gif' alt='upload of Svelte document' width="100%">
 
 5. The component tree visualizer should now be populated in the sidebar with the component name. Toggle through the down arrows to expand the tree. 
 
-<img src='./assets/OpeningComponent.gif' alt='opening the component tree visulizer' width="100%">
+<img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/OpeningComponent.gif' alt='opening the component tree visulizer' width="100%">
 
 6. Underneath the tree, the app performance shows the total number of components rendered in your application and the number of components that can re-render. An error log will also report any import issues.
 
-<img src='./assets/Errorlog.gif' alt='app performance with error log message' width="100%">
+<img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/Errorlog.gif' alt='app performance with error log message' width="100%">
 
 ## Techonology Stack
 <div id='technologies'>
   <li>
-    <img src='./assets/react.png' alt='React logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/react.png' alt='React logo' width='14' height='14' >
     React with React Hooks
   </li>
   <li>
-    <img src='./assets/vscode.png' alt='VSCode logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/vscode.png' alt='VSCode logo' width='14' height='14' >
     Visual Studio Code Extension API
   </li>
   <li>
-    <img src='./assets/typescript.png' alt='Typescript logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/typescript.png' alt='Typescript logo' width='14' height='14' >
     Typescript
   </li>
   <li>
-    <img src='./assets/Svelte.png' alt='Svelte logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/Svelte.png' alt='Svelte logo' width='14' height='14' >
     Svelte
   </li>
   <li>Svelte-Parse</li>
   <li>
-    <img src='./assets/Webview.png' alt='Webview logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/Webview.png' alt='Webview logo' width='14' height='14' >
     WebView
   </li>
   <li>
-    <img src='./assets/webpack2.png' alt='Webpack logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/webpack2.png' alt='Webpack logo' width='14' height='14' >
     Webpack</li>
   <li>
-    <img src='./assets/Sass.png' alt='Sass/Css logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/Sass.png' alt='Sass/Css logo' width='14' height='14' >
     SCSS/SASS
   </li>
 </div>
@@ -127,31 +130,31 @@ Distributed under the MIT License. See `LICENSE` for more information
   <li> 
     Hoon Park 
     <a href="https://www.linkedin.com/in/hoonpvrk">LinkedIn</a> 
-    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
     <a href="https://github.com/hoonpvrk">GitHub</a>
   </li>
   <li> 
     Martin Ng 
     <a href="https://www.linkedin.com/in/martinngsf/">LinkedIn</a> 
-    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
     <a href="https://github.com/kamartinng">GitHub</a>
   </li>
   <li>
     Jestyn Apuya 
     <a href="https://www.linkedin.com/in/jestynapuya/">LinkedIn</a> 
-    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
     <a href="https://github.com/JestynA">GitHub</a>
   </li>
   <li>
     Steven Nguyen 
     <a href="https://www.linkedin.com/in/nguyennsteven">LinkedIn</a> 
-    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' > 
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' > 
     <a href="https://github.com/Sateeven">GitHub</a>
   </li>
   <li>
     Candie Hill 
     <a href="https://www.linkedin.com/in/candie-hill/">LinkedIn</a> 
-    <img src='./assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
+    <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/smallResvelte.png' alt='small ReSvelte logo' width='14' height='14' >
     <a href="https://github.com/can619">GitHub</a>
   </li>
 </div>
