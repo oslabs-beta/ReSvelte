@@ -1,6 +1,7 @@
 <div id='resvelte' align="center">
   <a href="https://github.com/oslabs-beta/ReSvelte" alt='link to ReSvelte GitHub'>
-    <img src='./assets/RS.png' alt="ReSvelte Logo" width="75%">
+    <img src="./assets/RS.png" alt="ReSvelte Logo" width="75%">
+    <img src="assets/RS.png" alt="ReSvelte Logo" width="75%">
   </a>
 </div>
 
