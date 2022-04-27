@@ -8,12 +8,8 @@ import ErrorMessage from './components/errorMessage';
 import parseTree from './parser/parseTree';
 
 
-
-
-
 const App = () => {
 
- 
   const [isUploaded, setUploaded] = useState(false);
   const [newProject, setNewProject] = useState(false);
 
@@ -36,9 +32,7 @@ const App = () => {
     setTotalRerendering(0);
     setReactFiles([]);
     setRoot();
-  }
-
-  
+  };
 
   //////////////////STRETCH FEATURE : Create a render tree function so that user may upload another file at any given moment and it will rerender tree///////////////////
 

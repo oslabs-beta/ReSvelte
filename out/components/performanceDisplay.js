@@ -10,7 +10,6 @@ const performanceDisplay = (props) => {
         react_1.default.createElement("h1", null, "App Performance"),
         react_1.default.createElement("div", { id: 'mainContainer' },
             react_1.default.createElement("div", { id: 'Top' },
-                react_1.default.createElement("div", { id: 'Graphs', className: 'display' }, "Graphs"),
                 react_1.default.createElement("div", { id: 'Components', className: 'display' },
                     "Components",
                     react_1.default.createElement("div", { id: 'componentStatsDisplays' },

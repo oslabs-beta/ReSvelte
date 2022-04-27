@@ -1,201 +1,201 @@
 
 
-$borderColor: white;
-$fillColor: white;
+// $borderColor: white;
+// $fillColor: white;
 
-.appDisplay{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  // border: 1px solid white;
-  // border-radius: 5px;
-    // .selectFolder {
-    // border: 1px white solid;
-    // }
+// .appDisplay{
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: flex-start;
+//   // border: 1px solid white;
+//   // border-radius: 5px;
+//     // .selectFolder {
+//     // border: 1px white solid;
+//     // }
 
-    // #uploadButton {
-    //   font-weight: bold;
-    //   font-size: 25px;
+//     // #uploadButton {
+//     //   font-weight: bold;
+//     //   font-size: 25px;
 
-    // }
-    #newProject:hover{
-      cursor: pointer;
+//     // }
+//     #newProject:hover{
+//       cursor: pointer;
 
-    }
-}
+//     }
+// }
 
-#performanceDisplay{
+// #performanceDisplay{
 
-  $secondaryColor:rgb(193, 193, 193);
-  $thirdColor: rgb(142, 142, 142);
-  $displayComponentBackground: rgb(177, 177, 177);
+//   $secondaryColor:rgb(193, 193, 193);
+//   $thirdColor: rgb(142, 142, 142);
+//   $displayComponentBackground: rgb(177, 177, 177);
 
-  color: black;
+//   color: black;
 
-  height:100%;
-  width: 80%;
-  min-width: 100px;
+//   height:100%;
+//   width: 80%;
+//   min-width: 100px;
 
-  margin: 3%;
+//   margin: 3%;
 
-  border-style: solid;
-  border-color: $borderColor;
-  border-width: 10px;
-  border-radius: 10px;
+//   border-style: solid;
+//   border-color: $borderColor;
+//   border-width: 10px;
+//   border-radius: 10px;
 
-  background-color: $fillColor;
+//   background-color: $fillColor;
   
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
 
-  #mainContainer{
+//   #mainContainer{
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
     
-    gap: 30px;
-    margin: 5%;
-    width: 90%;
-    height: 100%;
+//     gap: 30px;
+//     margin: 5%;
+//     width: 90%;
+//     height: 100%;
 
-    border-style: solid;
-    border-color: $secondaryColor;
-    border-width: 10px;
-    border-radius: 10px;
-    background-color: $secondaryColor;
+//     border-style: solid;
+//     border-color: $secondaryColor;
+//     border-width: 10px;
+//     border-radius: 10px;
+//     background-color: $secondaryColor;
 
-    .display{
-      display: flex;
-      justify-content: center;
-      border-style: solid;
-      border-color: $thirdColor;
-      background-color: $thirdColor;
-      border-radius: 10px;
-      width: 90%; 
-    }
+//     .display{
+//       display: flex;
+//       justify-content: center;
+//       border-style: solid;
+//       border-color: $thirdColor;
+//       background-color: $thirdColor;
+//       border-radius: 10px;
+//       width: 90%; 
+//     }
 
-    #Top{
-    display: flex;
-    justify-content: center;
-    gap: 5%;
-    width: 95%;
-    }
+//     #Top{
+//     display: flex;
+//     justify-content: center;
+//     gap: 5%;
+//     width: 95%;
+//     }
 
-    #Bottom{
+//     #Bottom{
 
-    }
+//     }
 
-    #Graphs{
+//     #Graphs{
 
-    }
+//     }
 
-    #Components{  
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly ;
-      align-items: center;
+//     #Components{  
+//       display: flex;
+//       flex-direction: column;
+//       justify-content: space-evenly ;
+//       align-items: center;
 
-      div{
-        width: 90%;
-        height: 90%;
-        display:flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-      }
+//       div{
+//         width: 90%;
+//         height: 90%;
+//         display:flex;
+//         flex-direction: column;
+//         justify-content: space-evenly;
+//         align-items: center;
+//       }
 
-      #componentStatsDisplay{
-        display: flex;
-        justify-content: space-evenly;
-      }
-    }
+//       #componentStatsDisplay{
+//         display: flex;
+//         justify-content: space-evenly;
+//       }
+//     }
 
-    #errorDisplay{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .5vh;  
-      width: 95%;
-      height:100%;
+//     #errorDisplay{
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       gap: .5vh;  
+//       width: 95%;
+//       height:100%;
 
-      #errorMessage{
-        flex-direction: row;
-        background-color: $displayComponentBackground;
-        font-weight: bold;
-        border-radius: 5px;
-        width:95%;
-        padding-left: 10px;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        margin-bottom: .5vh;
-      }
-    }
+//       #errorMessage{
+//         flex-direction: row;
+//         background-color: $displayComponentBackground;
+//         font-weight: bold;
+//         border-radius: 5px;
+//         width:95%;
+//         padding-left: 10px;
+//         padding-top: 2px;
+//         padding-bottom: 2px;
+//         margin-bottom: .5vh;
+//       }
+//     }
 
-    }
-  }
+//     }
+//   }
 
-#componentTree{
-$buttonColor: rgb(68, 68, 68);
-$buttonHoverColor:rgb(54, 54, 54);
-$fontColor:rgb(163, 163, 163);
-$componentColor: rgb(110, 110, 110);
-$componentFontColor: rgb(255, 255, 255);
+// #componentTree{
+// $buttonColor: rgb(68, 68, 68);
+// $buttonHoverColor:rgb(54, 54, 54);
+// $fontColor:rgb(163, 163, 163);
+// $componentColor: rgb(110, 110, 110);
+// $componentFontColor: rgb(255, 255, 255);
 
-display: flex;
-justify-content: left;
-  #treeNode{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    left: 25px
+// display: flex;
+// justify-content: left;
+//   #treeNode{
+//     display: flex;
+//     flex-direction: column;
+//     position: relative;
+//     left: 25px
 
-  }
-  #componentNode{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
-    border-color: $componentColor;
-    background-color: $componentColor;
-    color: $componentFontColor;
-    border-radius: 5px;
-    margin: 3px;
-  }
+//   }
+//   #componentNode{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     border-style: solid;
+//     border-color: $componentColor;
+//     background-color: $componentColor;
+//     color: $componentFontColor;
+//     border-radius: 5px;
+//     margin: 3px;
+//   }
 
-  #expandButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    height: fit-content;
-    border-style: none;
+//   #expandButton{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: fit-content;
+//     height: fit-content;
+//     border-style: none;
 
-    color: black;
-    border-radius: 5px;
-    margin: 2px;
-  }
+//     color: black;
+//     border-radius: 5px;
+//     margin: 2px;
+//   }
 
-  #expandButton:hover{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    width: fit-content;
-    border-style: none;
+//   #expandButton:hover{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: fit-content;
+//     width: fit-content;
+//     border-style: none;
 
-    color: black;
-    border-radius: 5px;
-    margin: 2px;
-  }
+//     color: black;
+//     border-radius: 5px;
+//     margin: 2px;
+//   }
 
 
-}
+// }
 
 
 
