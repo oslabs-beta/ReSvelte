@@ -11,9 +11,9 @@ const performanceDisplay : FC<performanceDisplayTypes> = (props) => {
 
         <div id='mainContainer'>
           <div id='Top'>
-            <div id='Graphs' className='display'>
+            {/* <div id='Graphs' className='display'>
               Graphs
-            </div>
+            </div> */}
             <div id='Components' className='display' >
               Components
               <div id='componentStatsDisplays'>
