@@ -44,13 +44,13 @@ ReSvelte solves this issue. It is a performance developer tool that generates a 
 
 5. The component tree visualizer should now be populated in the sidebar with the component name. Toggle through the down arrows to expand the tree. 
 
-<img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/OpeningComponent.gif' alt='opening the component tree visulizer' width="100%">
+<img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/OpeningComponent.gif' alt='opening the component tree visualizer' width="100%">
 
 6. Underneath the tree, the app performance shows the total number of components rendered in your application and the number of components that can re-render. An error log will also report any import issues.
 
 <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/Errorlog.gif' alt='app performance with error log message' width="100%">
 
-## Techonology Stack
+## Technology Stack
 <div id='technologies'>
   <li>
     <img src='https://github.com/oslabs-beta/ReSvelte/raw/dev/assets/react.png' alt='React logo' width='14' height='14' >
@@ -102,18 +102,18 @@ ReSvelte solves this issue. It is a performance developer tool that generates a 
 
 9. Press `command, shift, P` then type into the search bar "Developer: Open Webview Tools" to see the dev tools panel
 
-10. If you make a change to the code, press the green restart button on the original code editor debugging bar. This will restart the development extension. Then repeat step 7.
+10. If you make a change to the code, press the green restart button on the original code editor debugging bar. This will restart the development extension. Then repeat steps 7 and 8.
 
 ## What to Contribute
 
 ReSvelte is an open source tool. Contributions are what make the open source community such an amazing place to learn, inspire, create, and grow. Any contributions you make are greatly appreciated. Here are some features that could improve this application and build upon the core functionality:
 
-<li>Store the paths of all files which would allow the user to click on a component and be taken to that file for further editing or confirmation</li>
+<li>Storing the paths of all files which would allow the user to click on a component and be taken to that file for further editing or confirmation</li>
 <li>Adding render time to the performance metrics</li>
 <li>Tracking memory usage of an imported application</li>
-<li>Add a link in the component tree to show the hierarchy</li>
+<li>Adding a link in the component tree to show the hierarchy</li>
 <li>Automatically find components in the imported application that aren’t running as expected and draw the user to that area</li>
-<li>A time machine that will allow users to make changes without risking the current state of the application</li>
+<li>Implementing a time machine that will allow users to make changes without risking the current state of the application</li>
 <li>Live updating of extension</li>
 
 ### Suggestions
