@@ -1,6 +1,5 @@
 import { Component } from "react";
 
-
 export type fileObj = {
   fileName: string,
   children: parsedSvelte[]
@@ -41,8 +40,6 @@ export interface nodeTypes {
   children: JSX.Element[],
   fileName: string,
 }
-
-
 
 
 
