@@ -1,7 +1,8 @@
 import * as vscode from 'vscode';
 
 
-export class SidebarProvider implements vscode.WebviewViewProvider { 
+export class SidebarProvider implements vscode.WebviewViewProvider {
+	[x: string]: any; 
 	public _view?: vscode.WebviewView; //made everything public for now
 	public _doc?: vscode.TextDocument; // made public
 
@@ -63,7 +64,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
 				<title>ReSvelte</title>
 			</head>
 			<body>
-				<div id="root">inside Div</div>
+				<div id="root">Loading extension...</div>
 				<script  src="${scriptUri}"></script>
 			</body>
 			</html>`;

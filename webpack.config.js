@@ -27,18 +27,18 @@ const extensionConfig = {
   },
   resolve: {
     // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
-    extensions: ['.ts', '.js', '.tsx']
+    extensions: ['.ts', '.js', '.tsx','.jsx','.png']
   },
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'ts-loader'
           }
-        ]
+        ] 
       },
       {
         test: /\.jsx?/,
@@ -51,18 +51,18 @@ const extensionConfig = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i ,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif)$/i,    
         use: [
           {
             loader: 'file-loader',
