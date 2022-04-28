@@ -161,9 +161,10 @@ Distributed under the MIT License. See `LICENSE` for more information
 
 # Contact Us
 
-Email: resvelteadm@gmail.com 
+Email: <a href="mailto: resvelteadm@gmail.com ">resvelteadm@gmail.com </a>
+ 
+Website: <a href="https://resvelte.com/ ">resvelte.com</a>
 
-Website: https://resvelte.com/
 
 
 
